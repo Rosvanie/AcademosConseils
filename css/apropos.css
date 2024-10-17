@@ -1,0 +1,710 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/*GENERAL*/
+
+:root {
+    --primary-color: #001B70; /* Couleur principale */
+    --secondary-color: #FFCE00; /* Couleur secondaire */
+    --accent-color: #ffffff; /* Couleur d'accent */
+    --text-color: #010C21; /* Couleur du texte */
+    --alert-color:#FF0000;/*Pour l'alert*/
+    --background-color: #c2bcbc; /* Couleur d'arrière-plan */
+
+}
+
+
+*{
+    padding: 0; margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: "Montserrat", sans-serif;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: AUTO; /* Empêche le défilement global */
+}
+
+section {
+    position: relative;
+    width: 100vw;
+    overflow: auto; /* Permet le défilement à l'intérieur de la section si nécessaire */
+}
+
+
+
+
+
+
+/*SECTION_ACCEUIL*/
+
+header{
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 65px;
+    background-color: var(--alert-color);
+    align-items: center;
+    color: var(--accent-color);
+    gap: 20px;
+    z-index: 1; /* Assure que le header est sous la navbar fixe */
+}
+
+header i{
+    color: #000000;
+    font-size: 50px;
+    margin: 0 30px;
+}
+
+header p{
+    font-size: 0.8rem;
+}
+
+.navbar {
+    position: fixed; /* Fixe la navbar en haut de la page */
+    top: 0; /* Positionne la navbar en haut */
+    animation: slideIn 2s ease-out;
+    width: 100%; /* Prend toute la largeur de la fenêtre */
+    height: 90px; /* Hauteur de la navbar */
+    background-color: var(--accent-color); /* Couleur de fond de la navbar */
+    display: flex; /* Utilise Flexbox pour aligner les éléments */
+    align-items: center; /* Centre les éléments verticalement */
+    justify-content: space-around; /* Espacement égal entre les éléments */
+    overflow: hidden; /* Cache tout débordement */
+    z-index: 1000; /* Assure que la navbar est au-dessus du contenu */
+    transition: transform 0.3s ease, opacity 0.3s ease; 
+}
+
+/* Ajoutez un padding supérieur au body pour éviter que le contenu ne soit caché derrière la navbar */
+body {
+    padding-top: 90px; /* Ajustez cette valeur selon la hauteur de votre navbar */
+}
+
+.navbar img{
+    width: 170px;
+}
+.menu{
+    display: flex;
+    gap: 20px;
+    
+    
+}
+
+.menu a{
+    font-size: 18px;
+    gap: 20px;
+    color: var(--text-color);
+    transition: 1s;
+    display: inline-block; /* Assure que le pseudo-élément prend toute la largeur */
+    overflow: hidden; /* Cache le débordement de l'animation */
+    
+}
+.menu a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0; /* Largeur initiale de la bordure */
+    height: 2px; /* Épaisseur de la bordure */
+    background-color: var(--secondary-color); /* Couleur de la bordure */
+    transition: width 1s ease; /* Transition de la largeur de la bordure */
+
+}
+.menu a:hover{
+    color: var(--primary-color); /* Couleur du texte au survol */
+    font-weight: 700;
+}
+
+.menu a:hover::after {
+    width: 100%; /* Largeur finale de la bordure */
+}
+
+.menu a.active{
+    color: var(--primary-color);
+}
+
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.search-container input[type="search"] {
+    padding: 10px 40px 10px 20px; /* Ajout de l'espace pour l'icône */
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 0.5rem;
+    width: 500px;
+}
+
+.search-button {
+    position: absolute;
+    right: 10px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.search-button i {
+    font-size: 20px;
+}
+
+
+/* Montrer le menu lorsqu'il est actif */
+.menu.active {
+    display: flex;
+}
+
+/* Media Queries pour la responsivité */
+
+@media (max-width: 1290px) {
+    .navbar {
+        width: 100%;
+        box-sizing: border-box;
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+        overflow-x: hidden; /* Empêche les débordements horizontaux */
+    }
+
+    .menu {
+        justify-content: center;
+        gap: 20px;
+        width: 100%; /* Assure que le menu prend toute la largeur */
+        margin: 0;
+    }
+
+    .navbar img {
+        width: 120px;
+        max-width: 100%; /* Assure que l'image ne dépasse jamais 100% de la largeur */
+    }
+
+    .menu a {
+        font-size: 14px;
+        margin: 20px 0;
+    }
+
+    .search-container input[type="search"] {
+        max-width: 90vw; /* Définit une largeur maximale */
+    }
+
+    body, html {
+        width: 100%;
+        overflow-x: hidden; /* Empêche les débordements horizontaux */
+    }
+}
+
+
+
+
+
+
+
+/*section-1 première div*/
+.container-propos {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Sépare le contenu et le bouton */
+    align-items: flex-start; /* Aligne le contenu à gauche */
+    height: 50vh; /* Prend toute la hauteur de l'écran */
+    background: var(--text-color);
+    color: var(--accent-color);
+}
+
+h1 {
+    text-align: left; /* Assure l'alignement du texte à gauche */
+    margin-bottom: 20px;
+    font-size: 2em;
+    font-weight: bold;
+    width: 100%; /* Prend toute la largeur du conteneur parent */
+}
+
+.container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex: 1; /* Prend l'espace vertical restant entre le titre et le bouton */
+    width: 100%;
+    margin: 10px;
+}
+
+.row-propos {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.vertical-hr {
+    width: 3px;
+    height: 80%; /* Prend la hauteur du contenu */
+    background-color: var(--secondary-color);
+    margin-right: 20px; /* Espace entre la ligne verticale et le texte */
+}
+
+.text-propos {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.image-propos img {
+    width: 400px;
+    height: auto;
+    object-fit: cover;
+    margin-left: 20px;
+}
+
+.btn {
+    margin: -20px;
+    padding: 10px 20px;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    align-self: center; /* Centre le bouton horizontalement dans son conteneur */
+    border-radius: 20px;
+}
+
+.btn:hover {
+    background-color: var(--primary-color);
+}
+
+/* --- Responsive Adjustments --- */
+
+/* Tablettes (max-width: 768px) */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Les éléments s'empilent sur les petits écrans */
+        align-items: center;
+        justify-content: center;
+    }
+
+    .row-propos {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .vertical-hr {
+        display: none; /* Cache la ligne verticale sur mobile/tablette */
+    }
+
+    .image-propos img {
+        display: none;
+    }
+
+    h1 {
+        text-align: center; /* Centre le titre pour les petits écrans */
+        font-size: 1.8em; /* Ajuste la taille du texte pour être plus lisible */
+    }
+
+    .text-propos {
+        padding: 0 10px;
+        text-align: center;
+    }
+}
+
+/* Mobiles (max-width: 480px) */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5em; /* Réduction de la taille du titre sur petits écrans */
+    }
+
+    .text-propos p {
+        font-size: 0.9em; /* Réduit la taille du texte pour les mobiles */
+    }
+
+    .btn {
+        padding: 8px 15px; /* Ajuste la taille du bouton pour les mobiles */
+        font-size: 0.9em;
+    }
+
+    .image-propos img {
+        max-width: 300px; /* Réduit encore l'image sur les petits écrans */
+    }
+}
+
+
+
+
+
+
+
+
+/* --- Section Container --- */
+.container-propos2 {
+    margin: 30px;
+    display: flex;
+    justify-content: space-around; /* Distribue l'espace autour des éléments */
+    align-items: center; /* Centre les éléments verticalement */
+    height: 20vh; /* Hauteur définie pour l'écran normal */
+}
+
+.text-left, .text-right {
+    width: 30%; /* Chaque texte prend 30% de la largeur du conteneur */
+    text-align: center;
+}
+
+.vertical-hr2 {
+    width: 3px;
+    height: 70%; /* Ajuste la hauteur selon vos besoins */
+    background-color: var(--secondary-color);
+}
+
+h1 {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.container-propos2 p {
+    font-weight: 600;
+}
+
+p span {
+    color: var(--primary-color);
+    font-weight: 900;
+}
+
+/* --- Responsive Adjustments --- */
+
+/* Tablettes (max-width: 768px) */
+@media (max-width: 768px) {
+    .container-propos2 {
+        flex-direction: column; /* Passe en disposition colonne pour les petits écrans */
+        justify-content: center;
+        align-items: center;
+        height: auto; /* Supprime la hauteur fixe pour permettre le contenu de s'adapter */
+    }
+
+    .text-left, .text-right {
+        width: 80%; /* Augmente la largeur pour mieux occuper l'espace */
+        text-align: center; /* Centre le texte pour une meilleure lisibilité */
+        margin: 10px 0; /* Ajoute un espace autour des textes */
+    }
+
+    .vertical-hr2 {
+        display: none; /* Cache la ligne verticale sur les petits écrans */
+    }
+
+    h1 {
+        font-size: 1.8em; /* Ajuste légèrement la taille du texte */
+    }
+}
+
+/* Mobiles (max-width: 480px) */
+@media (max-width: 480px) {
+    .container-propos2 {
+        margin: 20px;
+        height: auto; /* S'adapte automatiquement en hauteur */
+    }
+
+    .text-left, .text-right {
+        width: 100%; /* Prend toute la largeur de l'écran */
+        margin: 10px 0; /* Espace pour mieux aérer les éléments */
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 1.5em; /* Réduction de la taille du titre sur petits écrans */
+    }
+
+    .container-propos2 p {
+        font-size: 0.9em; /* Réduit la taille du texte pour les mobiles */
+    }
+}
+
+/* --- Styles additionnels pour la carte --- */
+.card-apropos {
+    height: 40vh;
+    background: var(--text-color);
+}
+
+.card-apropos .card-content {
+    background: var(--primary-color);
+    color: var(--accent-color);
+}
+
+
+
+
+
+
+
+
+
+/* SECTION A PROPOS*/
+
+/* Style général pour la section à propos */
+.about-section {
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+}
+
+.about-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 30px;
+}
+
+.about-image img {
+    max-width: 100%;
+    width: 100%;
+    height: 20vh;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.about-text {
+    max-width: 600px;
+}
+
+.about-text h2 {
+    font-size: 2.5em;
+    color: #6a0dad; /* Violet */
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.about-text p {
+    font-size: 1.1em;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Responsiveness */
+@media (max-width: 1024px) {
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-image img {
+        max-width: 80%;
+        margin: 0 auto 20px auto;
+    }
+
+    .about-text {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-text p {
+        font-size: 1em;
+    }
+
+    .about-text h2 {
+        font-size: 2em;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Les raisons de choisir */
+
+/* Style général pour la section */
+.reasons-section {
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5em;
+    color: #6a0dad; /* Violet */
+    margin-bottom: 50px;
+}
+
+/* Grille pour les 7 cartes */
+.reasons-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-image {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+.reason-number {
+    background-color: #6a0dad;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.card-title {
+    font-size: 1.5em;
+    color: #6a0dad; /* Violet */
+    margin-bottom: 10px;
+    text-align: center;
+    text-transform: uppercase
+    ;
+}
+
+.card-description {
+    font-size: 1em;
+    color: #555;
+    text-align: center;
+}
+
+/* Responsiveness */
+@media (max-width: 1024px) {
+    .reasons-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .reasons-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* PARTENAIRE */
+
+.carousel {
+    position: relative; /* Position relative pour le conteneur */
+    overflow: hidden; /* Masque tout débordement */
+    text-align: center; /* Centre le texte */
+    width: 90%;
+}
+
+.clients h1{
+    padding: 20px ;
+    text-align: center;
+}
+
+.logos {
+    display: flex; /* Affiche les logos en ligne */
+    white-space: nowrap; /* Empêche le retour à la ligne */
+    animation: scroll 15s linear infinite; /* Animation de défilement */
+    padding: 0 0 20px 0;
+    gap: 40px;
+    text-align: center;
+    justify-content: center;
+}
+
+.logos img {
+    width: 250px; /* Largeur fixe pour les logos */
+    height: auto; /* Hauteur automatique pour conserver le ratio */
+    margin: 0 10px; /* Espacement entre les logos */
+}
+
+/* Animation de défilement */
+@keyframes scroll {
+    0% {
+        transform: translateX(100%); /* Commence à droite de l'écran */
+    }
+    100% {
+        transform: translateX(-100%); /* Termine à gauche de l'écran */
+    }
+}
+
+
+
+
+/*FOOTER*/
+footer {
+    background-color: #f1f1f1; /* Couleur de fond du footer */
+    max-width: 100%; /* Empêche le footer de dépasser la largeur de l'écran */
+    padding: 20px; /* Ajoute un espace interne sans provoquer de débordement */
+}
+
+.footer {
+    display: flex; /* Affiche les colonnes en ligne */
+    justify-content: space-around; /* Espacement égal entre les colonnes */
+    flex-wrap: wrap; /* Permet aux colonnes de passer à la ligne si l'écran est trop étroit */
+    max-width: 1200px; /* Largeur maximale du footer */
+    margin: 0 auto; /* Centrage du footer */
+}
+
+.footer-column {
+    flex: 1; /* Chaque colonne prend une part égale de l'espace */
+    min-width: 200px; /* Largeur minimale pour chaque colonne */
+    text-align: center; /* Centre le texte */
+    padding: 10px; /* Espacement interne */
+}
+
+.footer-column img {
+    max-width: 100px; /* Largeur maximale pour le logo */
+    height: auto; /* Hauteur automatique pour conserver le ratio */
+    margin-bottom: 10px; /* Espacement en dessous du logo */
+}
+
+.footer h4 {
+    font-size: 1.2em; /* Taille de la police pour les titres */
+    margin-bottom: 10px; /* Espacement en dessous du titre */
+}
+
+.footer ul {
+    list-style: none; /* Supprime les puces de la liste */
+    padding: 0; /* Supprime l'espacement interne de la liste */
+}
+
+.footer li {
+    margin: 5px 0; /* Espacement vertical entre les éléments de la liste */
+}
+
+.footer p {
+    font-size: 0.9em; /* Taille de la police pour le texte */
+}
+
+/* Lien d'email */
+.footer a {
+    color: #6a0dad; /* Couleur violette pour le lien */
+    text-decoration: none; /* Supprime le soulignement */
+}
+
+.footer a:hover {
+    text-decoration: underline; /* Ajoute un soulignement au survol */
+}

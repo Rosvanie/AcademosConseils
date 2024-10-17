@@ -1,0 +1,548 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* GENERAL */
+
+:root {
+    --primary-color: #001B70; /* Couleur principale */
+    --secondary-color: #FFCE00; /* Couleur secondaire */
+    --accent-color: #ffffff; /* Couleur d'accent */
+    --text-color: #010C21; /* Couleur du texte */
+    --alert-color:#FF0000; /* Pour l'alerte */
+    --background-color: #c2bcbc; /* Couleur d'arrière-plan */
+    --background-color2: #e6e6e6; /* Couleur d'arrière-plan */
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: "Montserrat", sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+    overflow-x: hidden;
+}
+
+
+
+
+
+
+/*navbar*/
+.navbar {
+    position: fixed; /* Fixe la navbar en haut de la page */
+    top: 0; /* Positionne la navbar en haut */
+    animation: slideIn 2s ease-out;
+    width: 100%; /* Prend toute la largeur de la fenêtre */
+    height: 90px; /* Hauteur de la navbar */
+    background-color: var(--accent-color); /* Couleur de fond de la navbar */
+    display: flex; /* Utilise Flexbox pour aligner les éléments */
+    align-items: center; /* Centre les éléments verticalement */
+    justify-content: space-around; /* Espacement égal entre les éléments */
+    overflow: hidden; /* Cache tout débordement */
+    z-index: 1000; /* Assure que la navbar est au-dessus du contenu */
+    transition: transform 0.3s ease, opacity 0.3s ease; 
+}
+
+/* Ajoutez un padding supérieur au body pour éviter que le contenu ne soit caché derrière la navbar */
+body {
+    padding-top: 90px; /* Ajustez cette valeur selon la hauteur de votre navbar */
+}
+
+.navbar img{
+    width: 170px;
+}
+.menu{
+    display: flex;
+    gap: 20px;
+    
+    
+}
+
+.menu a{
+    font-size: 18px;
+    gap: 20px;
+    color: var(--text-color);
+    transition: 1s;
+    display: inline-block; /* Assure que le pseudo-élément prend toute la largeur */
+    overflow: hidden; /* Cache le débordement de l'animation */
+    
+}
+.menu a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0; /* Largeur initiale de la bordure */
+    height: 2px; /* Épaisseur de la bordure */
+    background-color: var(--secondary-color); /* Couleur de la bordure */
+    transition: width 1s ease; /* Transition de la largeur de la bordure */
+
+}
+.menu a:hover{
+    color: var(--primary-color); /* Couleur du texte au survol */
+    font-weight: 700;
+}
+
+.menu a:hover::after {
+    width: 100%; /* Largeur finale de la bordure */
+}
+
+.menu a.active{
+    color: var(--primary-color);
+}
+
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.search-container input[type="search"] {
+    padding: 10px 40px 10px 20px; /* Ajout de l'espace pour l'icône */
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 0.5rem;
+    width: 500px;
+}
+
+.search-button {
+    position: absolute;
+    right: 10px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.search-button i {
+    font-size: 20px;
+}
+
+
+/* Montrer le menu lorsqu'il est actif */
+.menu.active {
+    display: flex;
+}
+
+/* Media Queries pour la responsivité */
+
+@media (max-width: 1290px) {
+    .navbar {
+        width: 100%;
+        box-sizing: border-box;
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+        overflow-x: hidden; /* Empêche les débordements horizontaux */
+    }
+
+    .menu {
+        justify-content: center;
+        gap: 20px;
+        width: 100%; /* Assure que le menu prend toute la largeur */
+        margin: 0;
+    }
+
+    .navbar img {
+        width: 120px;
+        max-width: 100%; /* Assure que l'image ne dépasse jamais 100% de la largeur */
+    }
+
+    .menu a {
+        font-size: 14px;
+        margin: 20px 0;
+    }
+
+    .search-container input[type="search"] {
+        max-width: 90vw; /* Définit une largeur maximale */
+    }
+
+    body, html {
+        width: 100%;
+        overflow-x: hidden; /* Empêche les débordements horizontaux */
+    }
+}
+
+
+
+
+
+
+/* ROW_TEXT STYLES */
+.row_text {
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(rgba(255, 204, 0, 0.5), rgba(255, 255, 0, 0.5)),
+                url('../img/sharepoint-training-8112055_1280.webp') center/cover no-repeat;
+    padding: 20px;
+}
+
+.row_text h3 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.row_text p {
+    font-size: 1rem;
+    margin: 10px 0;
+}
+
+.row_text a {
+    cursor: pointer;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--secondary-color);
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.row_text a:hover {
+    background-color: #ffcd38;
+}
+
+/* ROW_TEXT2 STYLES */
+.row_text2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #f8f9fa;
+    padding: 10px;
+}
+
+.row_text2 h3 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.row_text2 hr {
+    width: 100px;
+    height: 5px;
+    border: 3px solid var(--secondary-color);
+    background-color: var(--secondary-color);
+    margin: 5px auto;
+}
+
+.row_text2 p {
+    margin: 10px 5px;
+}
+
+.row_text2 a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--secondary-color);
+    color: black;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.row_text2 a:hover {
+    background-color: #ffcd38;
+}
+
+/* RESPONSIVE DESIGN */
+
+/* Tablettes et petits écrans (max-width: 768px) */
+@media (max-width: 768px) {
+    .row_text {
+        height: auto;
+        padding: 15px;
+    }
+
+    .row_text h3 {
+        font-size: 1.5rem;
+    }
+
+    .row_text p {
+        font-size: 0.9rem;
+    }
+
+    .row_text a {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+
+    .row_text2 {
+        height: auto;
+        padding: 15px;
+    }
+
+    .row_text2 h3 {
+        font-size: 1.5rem;
+    }
+
+    .row_text2 hr {
+        width: 80px;
+    }
+
+    .row_text2 p {
+        font-size: 0.9rem;
+    }
+
+    .row_text2 a {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Mobiles (max-width: 480px) */
+@media (max-width: 480px) {
+    .row_text {
+        height: auto;
+        padding: 10px;
+    }
+
+    .row_text h3 {
+        font-size: 1.3rem;
+    }
+
+    .row_text p {
+        font-size: 0.8rem;
+    }
+
+    .row_text a {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+
+    .row_text2 {
+        height: auto;
+        padding: 10px;
+    }
+
+    .row_text2 h3 {
+        font-size: 1.3rem;
+    }
+
+    .row_text2 hr {
+        width: 70px;
+    }
+
+    .row_text2 p {
+        font-size: 0.8rem;
+    }
+
+    .row_text2 a {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+}
+
+
+
+
+
+
+
+
+
+/* --- Section Style --- */
+.nos-services {
+    width: 100%;
+    height: auto; /* Assure que la section prend 100% de la hauteur de l'écran */
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url('../img/taking-notes-3475991_1280.jpg') center/cover no-repeat;
+    position: relative;
+    padding: 25px 5vw;
+    text-align: center;
+    color: var(--accent-color);
+    overflow: hidden; /* Empêche l'apparition de la double scrollbar */
+    box-sizing: border-box; /* Inclut le padding dans la largeur */
+}
+
+.nos-services h3 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: 800;
+}
+
+.nos-services p {
+    font-size: 1rem;
+    margin-bottom: 50px;
+}
+
+/* --- Grille de services avec dimension uniforme des cartes --- */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colonnes sur grand écran */
+    grid-gap: 20px;
+    justify-content: center;
+    align-items: start;
+    padding: 0 10px;
+    width: 100%;
+    max-width: 100vw; /* Empêche le dépassement de la largeur de l'écran */
+    box-sizing: border-box; /* Inclut le padding dans la largeur */
+    overflow: hidden; /* Assure qu'il n'y ait pas de scrollbar */
+}
+
+/* --- Style des cartes de services avec dimension uniforme --- */
+.service-card {
+    background: rgba(0, 0, 0, 0.7); /* Transparence sombre */
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    color: var(--accent-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Équilibre le contenu verticalement */
+    align-items: center;
+    height: 100%; /* Prend toute la hauteur disponible */
+    min-height: 300px; /* Fixe une hauteur minimum */
+    box-sizing: border-box;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Add this line */
+}
+
+.service-card:hover {
+    background-color: var(--secondary-color); /* Couleur jaune sur hover */
+    color: black;
+}
+
+.service-card i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.service-card h4 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.service-card p {
+    font-size: 1rem;
+    line-height: 1.5; /* Améliore la lisibilité du texte */
+    flex-grow: 1; /* Fait en sorte que le texte occupe l'espace restant */
+}
+
+/* --- Responsive Adjustments --- */
+
+/* Tablettes et petits écrans (max-width: 768px) */
+@media (max-width: 768px) {
+    .nos-services {
+        padding: 20px 5vw;
+        height: auto; /* Permet à la section de s'ajuster au contenu */
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr); /* Passe à 2 colonnes */
+        grid-gap: 15px;
+    }
+
+    .service-card {
+        padding: 15px;
+        min-height: 250px; /* Ajuste la hauteur minimale */
+    }
+
+    .service-card i {
+        font-size: 2.5rem; /* Réduction de la taille des icônes */
+    }
+
+    .service-card h4 {
+        font-size: 1.3rem; /* Ajustement de la taille du titre */
+    }
+
+    .service-card p {
+        font-size: 0.9rem; /* Ajustement de la taille du texte */
+    }
+}
+
+/* Mobiles (max-width: 480px) */
+@media (max-width: 480px) {
+    .nos-services {
+        padding: 15px 5vw;
+        height: auto;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr; /* Passe à 1 colonne sur mobile */
+        grid-gap: 10px;
+    }
+
+    .service-card {
+        padding: 10px;
+        min-height: 200px; /* Ajuste la hauteur minimale */
+    }
+
+    .service-card i {
+        font-size: 2rem;
+    }
+
+    .service-card h4 {
+        font-size: 1.2rem;
+    }
+
+    .service-card p {
+        font-size: 0.8rem;
+    }
+}
+
+
+
+
+/*FOOTER*/
+footer {
+    background-color: #f1f1f1; /* Couleur de fond du footer */
+    max-width: 100%; /* Empêche le footer de dépasser la largeur de l'écran */
+    padding: 20px; /* Ajoute un espace interne sans provoquer de débordement */
+}
+
+.footer {
+    display: flex; /* Affiche les colonnes en ligne */
+    justify-content: space-around; /* Espacement égal entre les colonnes */
+    flex-wrap: wrap; /* Permet aux colonnes de passer à la ligne si l'écran est trop étroit */
+    max-width: 1200px; /* Largeur maximale du footer */
+    margin: 0 auto; /* Centrage du footer */
+}
+
+.footer-column {
+    flex: 1; /* Chaque colonne prend une part égale de l'espace */
+    min-width: 200px; /* Largeur minimale pour chaque colonne */
+    text-align: center; /* Centre le texte */
+    padding: 10px; /* Espacement interne */
+}
+
+.footer-column img {
+    max-width: 100px; /* Largeur maximale pour le logo */
+    height: auto; /* Hauteur automatique pour conserver le ratio */
+    margin-bottom: 10px; /* Espacement en dessous du logo */
+}
+
+.footer h4 {
+    font-size: 1.2em; /* Taille de la police pour les titres */
+    margin-bottom: 10px; /* Espacement en dessous du titre */
+}
+
+.footer ul {
+    list-style: none; /* Supprime les puces de la liste */
+    padding: 0; /* Supprime l'espacement interne de la liste */
+}
+
+.footer li {
+    margin: 5px 0; /* Espacement vertical entre les éléments de la liste */
+}
+
+.footer p {
+    font-size: 0.9em; /* Taille de la police pour le texte */
+}
+
+/* Lien d'email */
+.footer a {
+    color: #6a0dad; /* Couleur violette pour le lien */
+    text-decoration: none; /* Supprime le soulignement */
+}
+
+.footer a:hover {
+    text-decoration: underline; /* Ajoute un soulignement au survol */
+}

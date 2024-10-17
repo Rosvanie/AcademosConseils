@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formations</title>
+    <link rel="stylesheet" href="../css/contact.css">
+</head>
+<body>
+    <section>
+        <div class="navbar">
+            <a href="../index.html"><img src="../img/logo-png-academos.png" alt="logo_academos"></a>
+    
+            <div class="search-container">
+                <input type="search" placeholder="Saisissez un mot clé, une thématique, un métier">
+    
+                <button type="button" class="search-button">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                
+            </div>
+    
+            <div class="menu">
+                <a href="apropos.html" >A propos</a>
+                <a href="services.html">Services</a>
+                <a href="formations.html">Formations</a>
+                <a href="contact.html" class="active">Contact</a>
+            </div>
+    
+        </div>
+        <div class="row_contact">
+            <h3>Contactez-<span>NOUS </span></h3>
+    
+        </div>
+        <main class="container">
+            <div class="flex-container">
+                <div class="contact-info">
+                    <h2>
+                        N'hésitez pas à nous contacter. Remplissez simplement le 
+                        formulaire de contact ici et nous ne manquerons pas de vous 
+                        répondre dans les plus brefs délais.
+                    </h2>
+                    <ul>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i> 
+                            <b>Avenue</b> : <br>Avenue Ngueli ngueli, Quartier WHARF
+                            Centre - ville Pointe – Noire,
+                            République du Congo
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i> 
+                            <b>Téléphone </b>: <br>+242 04 051 00 92<br>
+                            +242 06 995 25 35
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i> 
+                            <b>Email :</b> <br>contact@cabinetformations.com
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <b> Horaires :</b> <br>Lundi - Vendredi, 9h - 18h
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="form-section">
+                    <h2>Formulaire d'inscription à une formation</h2>
+                    <form action="submit_form.php" method="POST">
+                        <label for="name">Nom complet :</label>
+                        <input type="text" id="name" name="name" required>
+        
+                        <label for="email">Email :</label>
+                        <input type="email" id="email" name="email" required>
+        
+                        <label for="phone">Numéro de téléphone :</label>
+                        <input type="tel" id="phone" name="phone" required>
+        
+                        <label for="formation">Formation souhaitée :</label>
+                        <select id="formation" name="formation" required>
+                            <option value="">-- Choisissez une formation --</option>
+                            <option value="web-development">Développement Web</option>
+                            <option value="digital-marketing">Marketing Digital</option>
+                            <option value="cyber-security">Sécurité Informatique</option>
+                            <option value="data-science">Data Science</option>
+                        </select>
+        
+                        <label for="message">Message / Questions :</label>
+                        <textarea id="message" name="message" placeholder="Indiquez vos questions ou besoins particuliers"></textarea>
+        
+                        <button type="submit">Envoyer ma demande</button>
+                    </form>
+        
+                    <!-- Bouton WhatsApp -->
+                    <a class="whatsapp-btn" href="https://wa.me/1234567890" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Contactez-nous sur WhatsApp
+                    </a>
+                </div>
+            </div>
+    
+        </div>
+        </main>
+    </section>
+
+    
+</body>
+</html>
