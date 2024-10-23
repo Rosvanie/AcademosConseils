@@ -24,7 +24,8 @@
 html, body {
     margin: 0;
     padding: 0;
-    overflow: AUTO; /* Empêche le défilement global */
+    overflow: auto; /* Empêche le défilement global */
+    overflow-x: hidden;
     
 }
 
@@ -95,6 +96,7 @@ body {
 }
 
 .menu a{
+    font-weight: 600;
     font-size: 18px;
     gap: 20px;
     color: var(--text-color);
@@ -115,7 +117,7 @@ body {
 
 }
 .menu a:hover{
-    color: var(--primary-color); /* Couleur du texte au survol */
+    color: var(--primary-bold-color); /* Couleur du texte au survol */
     font-weight: 700;
 }
 
@@ -278,6 +280,9 @@ h1 {
 
 /* --- Responsive Adjustments --- */
 
+@media (max-width: 1117px) {
+}
+
 /* Tablettes (max-width: 768px) */
 @media (max-width: 768px) {
     .container {
@@ -308,6 +313,9 @@ h1 {
         padding: 0 10px;
         text-align: center;
     }
+    .btn {
+        margin-top: 15px;
+    }
 }
 
 /* Mobiles (max-width: 480px) */
@@ -328,6 +336,20 @@ h1 {
     .image-propos img {
         max-width: 300px; /* Réduit encore l'image sur les petits écrans */
     }
+}
+
+@media (max-width: 370px){
+    .container{
+        width: 100%;
+    }
+
+    h1{
+        font-size: 10px;
+    }
+    .text-propos p{
+        font-size: 10px;
+    }
+
 }
 
 
@@ -443,7 +465,7 @@ p span {
 /* Style général pour la section à propos */
 .about-section {
     padding: 60px 20px;
-    background-color: #f9f9f9;
+    background-color: var(--primary-bold-color);
 }
 
 .about-container {
@@ -457,8 +479,8 @@ p span {
 
 .about-image img {
     max-width: 100%;
-    width: 100%;
-    height: 20vh;
+    width: 50vw;
+    height: auto;
     border-radius: 10px;
     object-fit: cover;
 }
@@ -469,14 +491,15 @@ p span {
 
 .about-text h2 {
     font-size: 2.5em;
-    color: #6a0dad; /* Violet */
+    color: var(--secondary-color); /* Violet */
+    font-weight: 800;
     margin-bottom: 20px;
     text-transform: uppercase;
 }
 
 .about-text p {
-    font-size: 1.1em;
-    color: #555;
+    font-size: 1em;
+    color: var(--accent-color);
     line-height: 1.6;
     margin-bottom: 20px;
 }
@@ -523,91 +546,268 @@ p span {
 /* Style général pour la section */
 .reasons-section {
     padding: 60px 20px;
-    background-color: #f9f9f9;
 }
 
 .section-title {
     text-align: center;
     font-size: 2.5em;
-    color: #6a0dad; /* Violet */
+    color: var(--primary-bold-color); /* Violet */
     margin-bottom: 50px;
 }
 
-/* Grille pour les 7 cartes */
+/* Grille pour les cartes */
 .reasons-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 20px; /* Espacement entre les cartes */
     max-width: 1200px;
     margin: 0 auto;
 }
 
+/* Styles pour les groupes de cartes */
+.number3,
+.number4 {
+    display: grid;
+    gap: 20px; /* Espacement entre les cartes */
+}
+
+/* Styles pour la div number3 */
+.number3 {
+    grid-template-columns: repeat(3, 1fr); /* 3 cartes sur la première ligne */
+}
+
+/* Styles pour la div number4 */
+.number4 {
+    grid-template-columns: repeat(4, 1fr); /* 4 cartes sur la seconde ligne */
+}
+
+/* Styles pour les cartes */
 .card {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #fff;
+    background: var(--accent-color);
     border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 15px; /* Diminuer le padding */
+    box-shadow: 0 4px 15px rgba(67, 13, 247, 0.909);
     transition: transform 0.3s;
+    overflow: hidden; /* Assurez-vous que le contenu ne dépasse pas */
 }
 
 .card:hover {
     transform: translateY(-5px);
 }
 
+/* Dimensions fixes pour les images */
 .card-image {
-    width: 100px;
-    height: 100px;
-    object-fit: contain;
-    margin-bottom: 20px;
+    width: 100%; /* Prend 100% de la largeur de la carte */
+    height: 140px; /* Ajuster la hauteur */
+    object-fit: cover; /* Couvre l'espace sans déformer l'image */
+    margin-bottom: 15px; /* Réduire l'espace entre l'image et le texte */
 }
 
 .reason-number {
-    background-color: #6a0dad;
-    color: #fff;
-    width: 50px;
-    height: 50px;
+    background-color: var(--primary-bold-color);
+    color: var(--accent-color);
+    width: 40px; /* Diminuer légèrement la largeur */
+    height: 40px; /* Diminuer légèrement la hauteur */
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.5em;
-    margin-bottom: 15px;
+    font-size: 1.2em; /* Réduire la taille de la police */
+    margin-bottom: 10px; /* Réduire l'espace sous le numéro */
 }
 
 .card-title {
-    font-size: 1.5em;
-    color: #6a0dad; /* Violet */
-    margin-bottom: 10px;
+    font-size: 1.2em; /* Réduire la taille de la police */
+    color: var(--primary-bold-color); /* Violet */
+    margin-bottom: 5px; /* Réduire l'espace sous le titre */
     text-align: center;
-    text-transform: uppercase
-    ;
+    text-transform: uppercase;
+    font-weight: 800;
 }
 
 .card-description {
-    font-size: 1em;
-    color: #555;
+    font-size: 0.85em; /* Réduire la taille de la police */
+    color: var(--text2-color);
     text-align: center;
+    line-height: 1.4; /* Ajuster l'interligne pour plus de lisibilité */
 }
 
 /* Responsiveness */
-@media (max-width: 1024px) {
-    .reasons-grid {
-        grid-template-columns: repeat(2, 1fr);
+@media (min-width: 1200px) {
+    .number3 {
+        grid-template-columns: repeat(3, 1fr); /* 3 cartes sur la première ligne */
+    }
+    .number4 {
+        grid-template-columns: repeat(4, 1fr); /* 4 cartes sur la seconde ligne */
     }
 }
 
+@media (max-width: 1199px) {
+    .number3 {
+        grid-template-columns: repeat(2, 1fr); /* 2 cartes pour les écrans moyens */
+    }
+    .number4 {
+        grid-template-columns: repeat(2, 1fr); /* 2 cartes pour les écrans moyens */
+    }
+}
+
+@media (max-width: 900px) {
+    .number3 {
+        grid-template-columns: 1fr; /* 1 carte pour les petits écrans */
+    }
+    .number4 {
+        grid-template-columns: 1fr; /* 1 carte pour les petits écrans */
+    }
+}
+
+
+
+
+/*SECTION */
+
+.custom-section {
+    padding: 20px;
+}
+
+/* Première div - pleine largeur */
+.full-width-div {
+    background-color: var(--primary-bold-color); /* Couleur de fond bleue */
+    color: var(--accent-color); /* Couleur du texte blanche */
+    text-align: center; /* Centre le texte */
+    padding: 40px 20px; /* Padding autour du contenu */
+}
+
+.main-title {
+    color: var(--secondary-color); /* Titre en jaune */
+    font-size: 3em; /* Taille du titre */
+    margin-bottom: 15px; /* Espace sous le titre */
+}
+
+.main-paragraph {
+    font-size: 1em; /* Taille du paragraphe */
+    line-height: 30px;
+}
+
+/* Deuxième div */
+
+.content-div {
+    display: flex; /* Utilise flexbox pour l'alignement */
+    justify-content: space-around; /* Espace autour des blocs */
+    gap: 10px; /* Espacement entre les blocs */
+    margin-top: 20px; /* Espace au-dessus de la div */
+    align-items: center;
+}
+
+/* Blocs de contenu */
+.content-block {
+    border-radius: 8px; /* Arrondit les bords */
+    padding: 20px; /* Padding interne */
+    flex: 1; /* Prend une largeur égale dans la flexbox */
+    max-width: 600px; /* Largeur maximum */
+    text-align: center; /* Centre le texte à l'intérieur des blocs */
+}
+
+.block-title {
+    font-size: 2em; /* Taille du titre du bloc */
+    margin-bottom: 10px; /* Espace sous le titre du bloc */
+    color: var(--primary-bold-color);
+    font-weight: 800;
+}
+
+.block-paragraph {
+    font-size: 1em; /* Taille du paragraphe dans les blocs */
+}
+
+/* Styles responsives */
 @media (max-width: 768px) {
-    .reasons-grid {
-        grid-template-columns: 1fr;
+    .main-title {
+        font-size: 2.5em; /* Réduit la taille du titre sur les petits écrans */
+    }
+
+    .main-paragraph {
+        font-size: 0.9em; /* Ajuste la taille du paragraphe sur les petits écrans */
+    }
+
+    .content-div {
+        flex-direction: column; /* Empile les blocs sur petits écrans */
+        align-items: center; /* Centre les blocs dans la colonne */
+    }
+
+    .content-block {
+        width: 100%; /* Chaque bloc prendra 100% de la largeur sur les petits écrans */
+        max-width: none; /* Supprime la largeur maximum pour éviter les débordements */
     }
 }
 
 
 
 
+
+
+
+
+/* SECTION Newsletter et Partenaires */
+
+/* Centrage de la div newsletter */
+.newsletter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    background-color: var(--secondary-color); /* Choisis la couleur de fond que tu préfères */
+    border-radius: 10px;
+    max-width: 600px; /* Limite la largeur */
+    margin: 40px auto; /* Centre horizontalement */
+}
+
+.newsletter h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: var(--text2-color);
+}
+
+/* Formulaire en flex */
+.newsletter-form {
+    display: flex;
+    flex-direction: column; /* Colonne */
+    width: 100%; /* Assure que les éléments prennent toute la largeur */
+}
+
+.newsletter-form input {
+    padding: 15px;
+    margin-bottom: 15px; /* Espacement entre les champs */
+    font-size: 1em;
+    border: 1px solid var(--accent-color);
+    border-radius: 5px;
+    width: 100%; /* Largeur complète */
+}
+
+.newsletter-form button {
+    padding: 12px;
+    font-size: 1.2em;
+    background-color: var(--primary-bold-color); /* Couleur du bouton */
+    color: var(--accent-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.newsletter-form button:hover {
+    background-color: var(--primary-color); /* Couleur au survol */
+}
+
+/* Pour les petits écrans */
+@media (max-width: 768px) {
+    .newsletter {
+        padding: 20px;
+        max-width: 90%;
+    }
+}
 
 
 
