@@ -1,28 +1,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-/* GENERAL */
+/*GENERAL*/
 
 :root {
-    --primary-color: #001B70; /* Couleur principale */
+    --primary-color: #003BCE; /* Couleur principale */
+    --primary-bold-color: #001B70;
     --secondary-color: #FFCE00; /* Couleur secondaire */
     --accent-color: #ffffff; /* Couleur d'accent */
     --text-color: #010C21; /* Couleur du texte */
-    --alert-color:#FF0000; /* Pour l'alerte */
+    --alert-color:#FF0000;/*Pour l'alert*/
     --background-color: #c2bcbc; /* Couleur d'arrière-plan */
-    --background-color2: #e6e6e6; /* Couleur d'arrière-plan */
+    --text2-color:#000000;
+
 }
 
-* {
-    padding: 0;
-    margin: 0;
+
+*{
+    padding: 0; margin: 0;
     box-sizing: border-box;
     text-decoration: none;
     font-family: "Montserrat", sans-serif;
 }
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: auto; /* Empêche le défilement global */
+    overflow-x: hidden; /* Empêche le défilement horizontal */
+    
+}
 
-body {
-    background-color: var(--background-color);
-    overflow-x: hidden;
+section {
+    position: relative;
+    width: 100vw;
+    overflow: auto; /* Permet le défilement à l'intérieur de la section si nécessaire */
 }
 
 
@@ -30,10 +40,35 @@ body {
 
 
 
-/*navbar*/
+/*SECTION_ACCEUIL*/
+
+header{
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 65px;
+    background-color: var(--alert-color);
+    align-items: center;
+    color: var(--accent-color);
+    gap: 20px;
+    z-index: 1; /* Assure que le header est sous la navbar fixe */
+}
+
+header i{
+    color: #000000;
+    font-size: 50px;
+    margin: 0 30px;
+}
+
+header p{
+    font-size: 0.8rem;
+}
+
 .navbar {
     position: fixed; /* Fixe la navbar en haut de la page */
-    top: 0; /* Positionne la navbar en haut */
+    top: 0; /* Place la navbar en haut */
+    left: 0;
+    right: 0;
     animation: slideIn 2s ease-out;
     width: 100%; /* Prend toute la largeur de la fenêtre */
     height: 90px; /* Hauteur de la navbar */
@@ -41,11 +76,10 @@ body {
     display: flex; /* Utilise Flexbox pour aligner les éléments */
     align-items: center; /* Centre les éléments verticalement */
     justify-content: space-around; /* Espacement égal entre les éléments */
-    overflow: hidden; /* Cache tout débordement */
     z-index: 1000; /* Assure que la navbar est au-dessus du contenu */
-    transition: transform 0.3s ease, opacity 0.3s ease; 
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ajoute une ombre pour la distinction */
 }
-
 /* Ajoutez un padding supérieur au body pour éviter que le contenu ne soit caché derrière la navbar */
 body {
     padding-top: 90px; /* Ajustez cette valeur selon la hauteur de votre navbar */
@@ -62,6 +96,7 @@ body {
 }
 
 .menu a{
+    font-weight: 600;
     font-size: 18px;
     gap: 20px;
     color: var(--text-color);
@@ -82,7 +117,7 @@ body {
 
 }
 .menu a:hover{
-    color: var(--primary-color); /* Couleur du texte au survol */
+    color: var(--primary-bold-color); /* Couleur du texte au survol */
     font-weight: 700;
 }
 
@@ -162,6 +197,7 @@ body {
     body, html {
         width: 100%;
         overflow-x: hidden; /* Empêche les débordements horizontaux */
+        padding-top: 90px;
     }
 }
 
@@ -206,7 +242,7 @@ body {
 }
 
 .row_text a:hover {
-    background-color: #ffcd38;
+    opacity: 0.8;
 }
 
 /* ROW_TEXT2 STYLES */
@@ -216,7 +252,6 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-color: #f8f9fa;
     padding: 10px;
 }
 
@@ -493,7 +528,8 @@ body {
 
 /*FOOTER*/
 footer {
-    background-color: #f1f1f1; /* Couleur de fond du footer */
+    background-color: var(--text2-color); /* Couleur de fond du footer */
+    color: var(--accent-color);
     max-width: 100%; /* Empêche le footer de dépasser la largeur de l'écran */
     padding: 20px; /* Ajoute un espace interne sans provoquer de débordement */
 }
@@ -511,6 +547,8 @@ footer {
     min-width: 200px; /* Largeur minimale pour chaque colonne */
     text-align: center; /* Centre le texte */
     padding: 10px; /* Espacement interne */
+    
+    
 }
 
 .footer-column img {
@@ -519,19 +557,21 @@ footer {
     margin-bottom: 10px; /* Espacement en dessous du logo */
 }
 
+.column-services{
+    text-align: left;
+}
+
 .footer h4 {
     font-size: 1.2em; /* Taille de la police pour les titres */
     margin-bottom: 10px; /* Espacement en dessous du titre */
+    color: var(--primary-color);
 }
 
-.footer ul {
-    list-style: none; /* Supprime les puces de la liste */
-    padding: 0; /* Supprime l'espacement interne de la liste */
+.services_footer{
+    display: flex;
+    flex-direction: column;
 }
 
-.footer li {
-    margin: 5px 0; /* Espacement vertical entre les éléments de la liste */
-}
 
 .footer p {
     font-size: 0.9em; /* Taille de la police pour le texte */
@@ -539,8 +579,9 @@ footer {
 
 /* Lien d'email */
 .footer a {
-    color: #6a0dad; /* Couleur violette pour le lien */
+    color: var(--secondary-color); /* Couleur violette pour le lien */
     text-decoration: none; /* Supprime le soulignement */
+    line-height: 25px;
 }
 
 .footer a:hover {
