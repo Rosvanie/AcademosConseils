@@ -3,12 +3,14 @@
 /*GENERAL*/
 
 :root {
-    --primary-color: #001B70; /* Couleur principale */
+    --primary-color: #003BCE; /* Couleur principale */
+    --primary-bold-color: #001B70;
     --secondary-color: #FFCE00; /* Couleur secondaire */
     --accent-color: #ffffff; /* Couleur d'accent */
     --text-color: #010C21; /* Couleur du texte */
     --alert-color:#FF0000;/*Pour l'alert*/
     --background-color: #c2bcbc; /* Couleur d'arrière-plan */
+    --text2-color:#000000;
 
 }
 
@@ -22,7 +24,7 @@
 html, body {
     margin: 0;
     padding: 0;
-    overflow: AUTO; /* Empêche le défilement global */
+    overflow: auto; /* Empêche le défilement global */
 }
 
 section {
@@ -70,7 +72,7 @@ header p{
     justify-content: space-around; /* Espacement égal entre les éléments */
     overflow: hidden; /* Cache tout débordement */
     z-index: 1000; /* Assure que la navbar est au-dessus du contenu */
-    transition: transform 0.3s ease, opacity 0.3s ease; 
+    transition: transform 0.3s ease, opacity 0.4s ease; 
 }
 
 .navbar img{
@@ -84,8 +86,9 @@ header p{
 }
 
 .menu a{
+    font-weight: 600;
     font-size: 18px;
-    gap: 20px;
+    gap: 30px;
     color: var(--text-color);
     transition: 1s;
     display: inline-block; /* Assure que le pseudo-élément prend toute la largeur */
@@ -104,7 +107,7 @@ header p{
 
 }
 .menu a:hover{
-    color: var(--primary-color); /* Couleur du texte au survol */
+    color: var(--primary-bold-color); /* Couleur du texte au survol */
     font-weight: 700;
 }
 
@@ -123,7 +126,7 @@ header p{
 }
 .search-container input[type="search"] {
     padding: 10px 40px 10px 20px; /* Ajout de l'espace pour l'icône */
-    border: 1px solid #ccc;
+    border: 1px solid var(--primary-bold-color);
     border-radius: 20px;
     font-size: 0.5rem;
     width: 500px;
@@ -231,11 +234,10 @@ header p{
 }
 
 .card {
-    border: 1px solid #ccc;
     border-radius: 10px;
     overflow: hidden;
     text-align: center;
-    background-color: #fff;
+    background-color: var(--background-color);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
     display: flex;
@@ -245,7 +247,7 @@ header p{
 }
 
 .card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-6px);
 }
 
 .card img {
@@ -264,12 +266,12 @@ header p{
 
 .content h2 {
     margin-bottom: 10px;
-    font-size: 1.1rem;
+    font-size: 1.5rem;
 }
 
 .price {
-    color: #e91e63;
-    font-weight: bold;
+    color: var(--primary-bold-color);
+    font-weight: 1000;
     margin-bottom: 10px;
 }
 
@@ -298,6 +300,9 @@ header p{
 }
 
 @media (max-width: 768px) {
+    .description{
+        display: none;
+    }
     .grid {
         grid-template-columns: repeat(4, 1fr); /* Toujours 4 colonnes */
         gap: 10px;
@@ -321,6 +326,9 @@ header p{
 }
 
 @media (max-width: 576px) {
+    .description{
+        display: none;
+    }
     .grid {
         grid-template-columns: repeat(4, 1fr); /* Toujours 4 colonnes, mais plus petites */
         gap: 5px;
@@ -352,6 +360,7 @@ header p{
 
 /* CSS pour la section about */
 #about {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center; /* Centre verticalement le contenu */
@@ -375,33 +384,34 @@ header p{
 
 #about .title {
     text-align: center;
-    font-size: 2rem; /* Taille de la police pour le titre */
+    font-size: 1.5rem; /* Taille de la police pour le titre */
+    margin-top: 50px;
     margin: 0; /* Supprime les marges par défaut */
 }
 
-.search-container {
+#about .search-container {
     position: relative;
     display: flex;
     align-items: center;
 }
-.search-container input[type="search"] {
+#about.search-container input[type="search"] {
     padding: 10px 40px 10px 20px; /* Ajout de l'espace pour l'icône */
-    border: 1px solid #ccc;
+    border: 1px solid var(--background-color);
     border-radius: 20px;
     font-size: 0.5rem;
     width: 500px;
 }
 
-.search-button {
+#about.search-button {
     position: absolute;
     right: 10px;
     border: none;
     background: transparent;
     cursor: pointer;
-    color: var(--text-color);
+    color: var(--primary-bold-color);
 }
 
-.search-button i {
+#about .search-button i {
     font-size: 20px;
 }
 
@@ -424,30 +434,66 @@ header p{
     box-sizing: border-box;
 }
 
-#about .search-bar i {
+.search-bar i {
     font-size: 1.5rem;
-    color: var(--text-color);
+    color: var(--primary-bold-color);
+    background-color: var(--text2-color);
+    padding: 10px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
 }
 
 #about .checkbox-group {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 40px; /* Espace entre chaque groupe de cases à cocher */
+    margin-bottom: 20px; /* Espace vertical entre les groupes */
 }
 
 #about .checkbox-group label {
     display: flex;
     align-items: center;
     font-size: 1rem;
-    gap: 10px;
+    gap: 15px; /* Espace entre la case à cocher et le texte */
 }
 
+#about .checkbox-group input[type="checkbox"]:checked + label {
+    color: var(--primary-color); /* Change la couleur du texte du label associé à la case cochée */
+}
+
+#about .checkbox-group input[type="checkbox"] {
+    appearance: none; /* Supprime le style par défaut de la case */
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--primary-color); /* Ajoute une bordure bleue */
+    border-radius: 4px; /* Donne un effet arrondi */
+    position: relative;
+    cursor: pointer;
+}
+
+#about .checkbox-group input[type="checkbox"]:checked {
+    background-color: var(--secondary-color); /* Change la couleur de fond quand elle est cochée */
+}
+
+#about .checkbox-group input[type="checkbox"]:checked::before {
+    content: '✔'; /* Ajouter une coche personnalisée */
+    color: var(--text2-color);
+    font-size: 15px;
+    position: absolute;
+    top: -2px;
+    left: 2px;
+}
+
+
 #about .link-with-trace {
-    color: var(--primary-color);
-    text-decoration: none;
+    color: var(--text-color);
     font-weight: bold;
     font-size: 1rem;
+    text-decoration: underline; /* Ajouter le soulignement */
+    text-align: right; /* Aligner le texte à droite */
+    width: 100%; /* Permet d'utiliser tout l'espace horizontal disponible */
 }
+
 
 #about .about-box {
     display: flex;
@@ -456,8 +502,10 @@ header p{
     gap: 20px;
     width: 100%;
     padding: 20px;
-    background-color: #f4f4f4; /* Arrière-plan de la div about-box */
+    background-color: var(--primary-bold-color); /* Arrière-plan de la div about-box */
     box-sizing: border-box;
+    border-radius: 20px;
+    color: var(--accent-color);
     flex-wrap: wrap; /* Assure la flexibilité en responsivité */
 }
 
@@ -477,10 +525,10 @@ header p{
 }
 
 #about .see-more {
-    color: var(--primary-color);
+    color: var(--secondary-color);
     text-decoration: none;
     font-weight: bold;
-    margin-top: 10px;
+    text-decoration: underline;
 }
 
 /* Media Queries pour la responsivité */
@@ -514,19 +562,18 @@ header p{
 
 .card-section {
     padding: 60px 20px;
-    background-color: #f8f9fa;
     text-align: center;
 }
 
 .section-title {
     font-size: 2.5em;
-    color: #6a0dad;
+    color: var(--text-color);
     margin-bottom: 10px;
 }
 
 .section-subtitle {
     font-size: 1.2em;
-    color: #666;
+    color: var(--text2-color);
     margin-bottom: 40px;
 }
 
@@ -540,10 +587,10 @@ header p{
 
 /* --- Card Styling --- */
 .card {
-    background-color: white;
+    background-color: var(--accent-color);
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(235, 212, 99, 0.1);
     transition: transform 0.3s ease;
     max-width: 350px;
 }
@@ -570,13 +617,12 @@ header p{
 
 .card-title {
     font-size: 1.5em;
-    color: #6a0dad;
+    color: var(--primary-bold-color);
     margin-bottom: 10px;
 }
 
 .card-description {
     font-size: 1em;
-    color: #666;
     line-height: 1.6;
 }
 
@@ -585,8 +631,8 @@ header p{
     margin-top: 30px;
     padding: 10px 20px;
     font-size: 1.2em;
-    background-color: #6a0dad;
-    color: white;
+    background-color: var(--primary-bold-color);
+    color: var(--accent-color);
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -594,7 +640,8 @@ header p{
 }
 
 .see-more-btn:hover {
-    background-color: #551a8b;
+    background-color: var(--secondary-color);
+    color: var(--text2-color);
 }
 
 /* --- Responsive Design --- */
@@ -647,7 +694,7 @@ header p{
     justify-content: center;
     text-align: center;
     padding: 40px 20px;
-    background-color: #f0f0f0; /* Choisis la couleur de fond que tu préfères */
+    background-color: var(--secondary-color); /* Choisis la couleur de fond que tu préfères */
     border-radius: 10px;
     max-width: 600px; /* Limite la largeur */
     margin: 40px auto; /* Centre horizontalement */
@@ -656,7 +703,7 @@ header p{
 .newsletter h1 {
     font-size: 2em;
     margin-bottom: 20px;
-    color: #333;
+    color: var(--text2-color);
 }
 
 /* Formulaire en flex */
@@ -670,7 +717,7 @@ header p{
     padding: 15px;
     margin-bottom: 15px; /* Espacement entre les champs */
     font-size: 1em;
-    border: 1px solid #ccc;
+    border: 1px solid var(--accent-color);
     border-radius: 5px;
     width: 100%; /* Largeur complète */
 }
@@ -678,8 +725,8 @@ header p{
 .newsletter-form button {
     padding: 12px;
     font-size: 1.2em;
-    background-color: #6a0dad; /* Couleur du bouton */
-    color: white;
+    background-color: var(--primary-bold-color); /* Couleur du bouton */
+    color: var(--accent-color);
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -687,7 +734,7 @@ header p{
 }
 
 .newsletter-form button:hover {
-    background-color: #551a8b; /* Couleur au survol */
+    background-color: var(--primary-color); /* Couleur au survol */
 }
 
 /* Pour les petits écrans */
@@ -705,7 +752,7 @@ header p{
     overflow-x: hidden; /* Masque tout débordement */
     text-align: center; /* Centre le texte */
     padding: 40px 0;
-    background-color: #fff;
+    background-color: var(--accent-color);
     border-radius: 10px;
     width: 90%;
     margin: 40px auto;
@@ -713,7 +760,7 @@ header p{
 
 .carousel h1 {
     font-size: 2em;
-    color: #333;
+    color: var(--text2-color);
     margin-bottom: 30px;
 }
 
@@ -752,7 +799,8 @@ header p{
 
 /*FOOTER*/
 footer {
-    background-color: #f1f1f1; /* Couleur de fond du footer */
+    background-color: var(--text2-color); /* Couleur de fond du footer */
+    color: var(--accent-color);
     max-width: 100%; /* Empêche le footer de dépasser la largeur de l'écran */
     padding: 20px; /* Ajoute un espace interne sans provoquer de débordement */
 }
@@ -770,6 +818,8 @@ footer {
     min-width: 200px; /* Largeur minimale pour chaque colonne */
     text-align: center; /* Centre le texte */
     padding: 10px; /* Espacement interne */
+    
+    
 }
 
 .footer-column img {
@@ -778,19 +828,21 @@ footer {
     margin-bottom: 10px; /* Espacement en dessous du logo */
 }
 
+.column-services{
+    text-align: left;
+}
+
 .footer h4 {
     font-size: 1.2em; /* Taille de la police pour les titres */
     margin-bottom: 10px; /* Espacement en dessous du titre */
+    color: var(--primary-color);
 }
 
-.footer ul {
-    list-style: none; /* Supprime les puces de la liste */
-    padding: 0; /* Supprime l'espacement interne de la liste */
+.services_footer{
+    display: flex;
+    flex-direction: column;
 }
 
-.footer li {
-    margin: 5px 0; /* Espacement vertical entre les éléments de la liste */
-}
 
 .footer p {
     font-size: 0.9em; /* Taille de la police pour le texte */
@@ -798,8 +850,9 @@ footer {
 
 /* Lien d'email */
 .footer a {
-    color: #6a0dad; /* Couleur violette pour le lien */
+    color: var(--secondary-color); /* Couleur violette pour le lien */
     text-decoration: none; /* Supprime le soulignement */
+    line-height: 25px;
 }
 
 .footer a:hover {
