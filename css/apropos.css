@@ -3,12 +3,14 @@
 /*GENERAL*/
 
 :root {
-    --primary-color: #001B70; /* Couleur principale */
+    --primary-color: #003BCE; /* Couleur principale */
+    --primary-bold-color: #001B70;
     --secondary-color: #FFCE00; /* Couleur secondaire */
     --accent-color: #ffffff; /* Couleur d'accent */
     --text-color: #010C21; /* Couleur du texte */
     --alert-color:#FF0000;/*Pour l'alert*/
     --background-color: #c2bcbc; /* Couleur d'arrière-plan */
+    --text2-color:#000000;
 
 }
 
@@ -23,6 +25,7 @@ html, body {
     margin: 0;
     padding: 0;
     overflow: AUTO; /* Empêche le défilement global */
+    
 }
 
 section {
@@ -62,7 +65,9 @@ header p{
 
 .navbar {
     position: fixed; /* Fixe la navbar en haut de la page */
-    top: 0; /* Positionne la navbar en haut */
+    top: 0; /* Place la navbar en haut */
+    left: 0;
+    right: 0;
     animation: slideIn 2s ease-out;
     width: 100%; /* Prend toute la largeur de la fenêtre */
     height: 90px; /* Hauteur de la navbar */
@@ -70,11 +75,10 @@ header p{
     display: flex; /* Utilise Flexbox pour aligner les éléments */
     align-items: center; /* Centre les éléments verticalement */
     justify-content: space-around; /* Espacement égal entre les éléments */
-    overflow: hidden; /* Cache tout débordement */
     z-index: 1000; /* Assure que la navbar est au-dessus du contenu */
-    transition: transform 0.3s ease, opacity 0.3s ease; 
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ajoute une ombre pour la distinction */
 }
-
 /* Ajoutez un padding supérieur au body pour éviter que le contenu ne soit caché derrière la navbar */
 body {
     padding-top: 90px; /* Ajustez cette valeur selon la hauteur de votre navbar */
@@ -191,6 +195,7 @@ body {
     body, html {
         width: 100%;
         overflow-x: hidden; /* Empêche les débordements horizontaux */
+        padding-top: 90px;
     }
 }
 
@@ -655,7 +660,8 @@ p span {
 
 /*FOOTER*/
 footer {
-    background-color: #f1f1f1; /* Couleur de fond du footer */
+    background-color: var(--text2-color); /* Couleur de fond du footer */
+    color: var(--accent-color);
     max-width: 100%; /* Empêche le footer de dépasser la largeur de l'écran */
     padding: 20px; /* Ajoute un espace interne sans provoquer de débordement */
 }
@@ -673,6 +679,8 @@ footer {
     min-width: 200px; /* Largeur minimale pour chaque colonne */
     text-align: center; /* Centre le texte */
     padding: 10px; /* Espacement interne */
+    
+    
 }
 
 .footer-column img {
@@ -681,19 +689,21 @@ footer {
     margin-bottom: 10px; /* Espacement en dessous du logo */
 }
 
+.column-services{
+    text-align: left;
+}
+
 .footer h4 {
     font-size: 1.2em; /* Taille de la police pour les titres */
     margin-bottom: 10px; /* Espacement en dessous du titre */
+    color: var(--primary-color);
 }
 
-.footer ul {
-    list-style: none; /* Supprime les puces de la liste */
-    padding: 0; /* Supprime l'espacement interne de la liste */
+.services_footer{
+    display: flex;
+    flex-direction: column;
 }
 
-.footer li {
-    margin: 5px 0; /* Espacement vertical entre les éléments de la liste */
-}
 
 .footer p {
     font-size: 0.9em; /* Taille de la police pour le texte */
@@ -701,8 +711,9 @@ footer {
 
 /* Lien d'email */
 .footer a {
-    color: #6a0dad; /* Couleur violette pour le lien */
+    color: var(--secondary-color); /* Couleur violette pour le lien */
     text-decoration: none; /* Supprime le soulignement */
+    line-height: 25px;
 }
 
 .footer a:hover {
