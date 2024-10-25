@@ -53,7 +53,7 @@ header{
 }
 
 header i{
-    color: #000000;
+    color: var(--text2-color);
     font-size: 50px;
     margin: 0 30px;
 }
@@ -744,6 +744,10 @@ header p{
         max-width: 90%;
     }
 }
+
+
+
+
 
 /* PARTENAIRE */
 
