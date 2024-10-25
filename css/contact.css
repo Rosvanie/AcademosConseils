@@ -186,7 +186,7 @@ body {
     }
 
     .menu a {
-        font-size: 14px;
+        font-size: 12px;
         margin: 20px 0;
     }
 
@@ -263,15 +263,18 @@ p {
 
 /* Section fixe pour les informations de contact */
 .contact-info {
-    background-color: #fff;
+    background-color: var(--primary-bold-color);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 30%; /* Prend 30% de la largeur */
+    color: var(--accent-color);
 }
 
 .contact-info h2 {
-    color: #4B0082; /* Violet primaire */
+    color: var(--secondary-color); 
+    font-size: 1.3rem;
+    margin-bottom: 20px;
 }
 
 .contact-info ul {
@@ -284,14 +287,14 @@ p {
     font-size: 1.1em;
 }
 
-.contact-info ul li i {
-    color: #FF6F61; /* Corail pour les icônes */
+.contact-info li i {
+    color: var(--secondary-color); /* Corail pour les icônes */
     margin-right: 10px;
 }
 
 /* Section du formulaire */
 .form-section {
-    background-color: #fff;
+    background-color: var(--accent-color);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -299,7 +302,8 @@ p {
 }
 
 .form-section h2 {
-    color: #4B0082; /* Violet primaire */
+    color: var(--primary-bold-color); 
+    margin-bottom: 20px;
 }
 
 form {
@@ -310,9 +314,12 @@ form {
 
 form input, form select, form textarea {
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--background-color);
     border-radius: 5px;
     font-size: 1em;
+}
+label{
+    font-weight: 700;
 }
 
 form textarea {
@@ -320,8 +327,8 @@ form textarea {
 }
 
 form button {
-    background-color: #FF6F61; /* Corail */
-    color: white;
+    background-color: var(--primary-bold-color); /* Corail */
+    color: var(--accent-color);
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -331,7 +338,9 @@ form button {
 }
 
 form button:hover {
-    background-color: #E63946; /* Rose foncé */
+    background-color: var(--secondary-color); /* Rose foncé */
+    color: var(--text2-color);
+    font-weight: 700;
 }
 
 .whatsapp-btn {
@@ -339,7 +348,7 @@ form button:hover {
     margin-top: 20px;
     text-align: center;
     background-color: #25D366; /* Vert WhatsApp */
-    color: white;
+    color: var(--accent-color);
     padding: 10px 20px;
     border-radius: 5px;
     text-decoration: none;
@@ -391,6 +400,9 @@ form button:hover {
         font-size: 1em;
     }
 }
+
+
+
 
 
 /*FOOTER*/
