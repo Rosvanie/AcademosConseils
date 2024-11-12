@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formations</title>
+    <title>Contactez-nous</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/contact.css">
 </head>
@@ -11,29 +11,38 @@
     <section>
         <div class="navbar">
             <a href="../index.html"><img src="../img/logo-png-academos.png" alt="logo_academos"></a>
-    
+        
             <div class="search-container">
                 <input type="search" placeholder="Saisissez un mot clé, une thématique, un métier">
-    
                 <button type="button" class="search-button">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
-                
             </div>
-    
+        
             <div class="menu">
-                <a href="apropos.html" >A propos</a>
-                <a href="services.html">Services</a>
+                <a href="../index.html">Accueil</a>
+                <a href="apropos.html">A propos</a>
+        
+                <!-- Menu déroulant pour Services -->
+                <div class="dropdown">
+                    <a href="services.html" class="dropdown-toggle">Services</a>
+                    <div class="submenu">
+                        <a href="id/management.html">Management</a>
+                        <a href="id/accompagnement.html">Accompagnement</a>
+                        <a href="id/audit.html">Audit</a>
+                        <a href="id/conseil.html">Conseil</a>
+                        <a href="id/salle.html">Salle à louer</a>
+                    </div>
+                </div>
+        
                 <a href="formations.html">Formations</a>
                 <a href="contact.html" class="active">Contact</a>
             </div>
-    
         </div>
-        <div class="row_contact">
+        <div class="row_contact section">
             <h3>Contactez-<span>NOUS </span></h3>
-    
         </div>
-        <main class="container">
+        <main class="section container">
             <div class="flex-container">
                 <div class="contact-info">
                     <h2>
@@ -129,6 +138,8 @@
             </div>
         </div>
     </footer>
+
+    <script src="../script.js"></script>
 
     
 </body>
