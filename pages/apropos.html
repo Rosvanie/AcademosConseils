@@ -9,46 +9,55 @@
 </head>
 <body>
 
-    <section class="header">
+    <section class="header ">
         <div class="navbar">
             <a href="../index.html"><img src="../img/logo-png-academos.png" alt="logo_academos"></a>
-    
+        
             <div class="search-container">
                 <input type="search" placeholder="Saisissez un mot clé, une thématique, un métier">
-    
                 <button type="button" class="search-button">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
-                
             </div>
-    
+        
             <div class="menu">
                 <a href="../index.html">Accueil</a>
                 <a href="apropos.html" class="active">A propos</a>
-                <a href="services.html">Services</a>
+        
+                <!-- Menu déroulant pour Services -->
+                <div class="dropdown">
+                    <a href="services.html" class="dropdown-toggle">Services</a>
+                    <div class="submenu">
+                        <a href="id/management.html">Management</a>
+                        <a href="id/accompagnement.html">Accompagnement</a>
+                        <a href="id/audit.html">Audit</a>
+                        <a href="id/conseil.html">Conseil</a>
+                        <a href="id/salle.html">Salle à louer</a>
+                    </div>
+                </div>
+        
                 <a href="formations.html">Formations</a>
                 <a href="contact.html">Contact</a>
-                
             </div>
-    
         </div>
 
-        <div class="container-propos">
+        <div class="section container-propos">
             <h1>Nous connaître</h1>
             <div class="container">
                 <div class="vertical-hr"></div>
                 <div class="row-propos">
                     <div class="text-propos">
-                        <p>Nous développons les savoirs, les compétences et l’efficience.</p><br>
-                        <p>Dans un monde en profonde mutation où les usages évoluent, la nouvelle 
-                            marque Lefebvre Dalloz est une réponse globale combinant une offre d’Edition, 
-                            de Formation et de Logiciels & Services, en droit, fiscalité, comptabilité et 
-                            conformité. Nos contenus fiables et actualisés, l’approche transversale de nos 
-                            métiers et notre culture du service sont au cœur d’une vision partagée par nos 
-                            collaborateurs, pour la meilleure expérience client. Academos-conseils regroupe 
-                            trois éditeurs (Dalloz, Editions Francis Lefebvre et Editions Législatives) et 
-                            cinq organismes de formation (Dalloz Formation, Francis Lefebvre Formation, Elegia 
-                            Formation, CSP Docendi et Bärchen).
+                        <p>ACADEMOS CONSEIL, au cœur de la transformation des organisations.</p><br>
+                        <p>ACADEMOS CONSEILS propose aux organisations et aux entreprises de toute taille et
+                            de tout secteur, des services de conseil, d’accompagnement, d’audit et de formation
+                            afin de les aider à construire une démarche d’amélioration continue sur le long terme et
+                            à dessiner un avenir jalonné de succès. Notre force est basée sur notre expérience et
+                            une diversité de consultants possédant les compétences et pédagogies les plus
+                            actuelles, innovantes et techniques.<br>
+                            Nous axons notre démarche globale sur votre valeur ajoutée, l’écoute et une relation
+                            de partenariat centrée sur vos nouveaux objectifs. Nous travaillons ensemble vers la
+                            solution la plus adaptée selon vos impératifs de résultats.
+                            
                         </p>
                     </div>
                     <div class="image-propos">
@@ -56,7 +65,7 @@
                     </div>
                 </div>
             </div>
-            <button class="btn">Nous contactez</button>
+            <button class="btn"><a href="contact.html">Nous contactez</a></button>
         </div>
 
         <div class="container-propos2">
@@ -75,7 +84,7 @@
         
     </section>
 
-    <section class="about-section">
+    <section class=" section about-section">
         <div class="about-container">
             <div class="about-image">
                 <img src="../img/apropos/AA1.png" alt="Image de Academos Conseils">
@@ -89,10 +98,12 @@
                     Nous proposons aux entreprises et particuliers des services à forte valeur ajoutée pour atteindre l’excellence opérationnelle de l’ensemble des processus métiers et supports, ainsi que les objectifs de rentabilité planifiés.
                 </p>
                 <p>
-                    Avec notre offre variée de services à la pointe de l’innovation et nos équipes d’experts tant nationaux qu’internationaux, nous offrons un soulagement fiable aux problématiques de développement des compétences des collaborateurs, de performance des processus opérationnels auxquelles les entreprises font face.
+                    Avec notre offre variée de services à la pointe de l’innovation et nos équipes d’experts tant nationaux qu’internationaux, nous offrons un soulagement fiable aux problématiques de développement des compétences des collaborateurs, 
+                    de performance des processus opérationnels auxquelles les entreprises font face.
                 </p>
                 <p>
-                    Pour l’ensemble des interventions, nous nous assurons que nos prestations répondent parfaitement aux besoins et exigences du client. Nos équipes de spécialistes fournissent un soutien continu et de qualité grâce à notre expertise, proactivité et réactivité démontrées, gage du service après-vente de choix.
+                    Pour l’ensemble des interventions, nous nous assurons que nos prestations répondent parfaitement aux besoins et exigences du client. Nos équipes de spécialistes fournissent un soutien continu et de qualité grâce à notre expertise, 
+                    proactivité et réactivité démontrées, gage du service après-vente de choix.
                 </p>
             </div>
         </div>
@@ -217,7 +228,7 @@
         </div>
         
         <div class="content-div">
-            <div class="content-block">
+            <div class="content-block left">
                 <h3 class="block-title">UNE EXPERTISE TECHNIQUE</h3>
                 <p class="block-paragraph">
                     Animer une formation, c’est transmettre un savoir, une expérience, mieux encore 
@@ -228,7 +239,7 @@
                 </p>
         
             </div>
-            <div class="content-block">
+            <div class="content-block right">
                 <h3 class="block-title">UN SENS DE LA PEDAGOGIE AFFIRME</h3>
                 <p class="block-paragraph">
                     Une "bonne" formation requiert la double condition de la détention d'une expertise avérée, 
