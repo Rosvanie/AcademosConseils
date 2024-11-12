@@ -35,7 +35,30 @@ section {
     overflow: auto; /* Permet le défilement à l'intérieur de la section si nécessaire */
 }
 
-
+/* Animation Keyframe */
+@keyframes fadeInUpScale {
+    0% {
+      opacity: 0;
+      transform: translateY(30px) scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  /* Style pour les sections animées uniquement */
+  .section {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  
+  /* Appliquer l'animation uniquement aux sections en vue */
+  .section.in-view {
+    animation: fadeInUpScale 0.8s ease forwards;
+  }
+  
 
 
 
@@ -161,6 +184,48 @@ body {
     display: flex;
 }
 
+
+/* Style du menu déroulant */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--accent-color); /* Utilisation de la couleur d'accentuation */
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour l'effet de profondeur */
+    z-index: 10;
+    min-width: 150px;
+}
+
+.submenu a {
+    display: block;
+    color: var(--text-color); /* Couleur du texte */
+    padding: 10px 20px;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+.submenu a:hover {
+    background-color: var(--primary-bold-color); /* Changement de couleur au survol */
+    color: #fff; /* Couleur de texte au survol */
+}
+
+/* Afficher le sous-menu au survol */
+.dropdown:hover .submenu {
+    display: block;
+}
+
+
+
 /* Media Queries pour la responsivité */
 
 @media (max-width: 1290px) {
@@ -208,12 +273,12 @@ body {
 
 .row_contact {
     height: 30vh;
-    display: flex;
-    flex-direction: column;
+    text-align: center;
     justify-content: center;
-    background: linear-gradient(rgba(255, 204, 0, 0.5), rgba(255, 255, 0, 0.5)), 
+    background: linear-gradient(rgba(68, 0, 255, 0.5), rgba(38, 0, 255, 0.5)), 
                 url('../img/sharepoint-training-8112055_1280.webp') center/cover no-repeat;
     padding: 20px;
+    color: var(--accent-color);
 }
 
 .row_contact h3 {
@@ -223,12 +288,33 @@ body {
 }
 
 .row_contact h3 span{
-    color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+/* Styles Responsives */
+@media (max-width: 768px) {
+    .row_contact {
+        height: auto; /* Permet à la hauteur de s'ajuster automatiquement */
+        padding: 30px; /* Augmente le remplissage pour les petits écrans */
+    }
+
+    .row_contact h3 {
+        font-size: 2.5rem; /* Réduit la taille de la police pour les petits écrans */
+        margin: 1rem 0; /* Réduit les marges */
+    }
+}
+
+@media (max-width: 480px) {
+    .row_contact h3 {
+        font-size: 2rem; /* Réduction supplémentaire pour les très petits écrans */
+        margin: 0.5rem 0; /* Marges réduites */
+    }
 }
 
 
 
 
+/*SECTION*/
 
 .content {
     width: 90%;
@@ -249,14 +335,15 @@ body {
     display: inline-block;
     padding: 10px 20px;
     margin-right: 10px;
-    background-color: #eee;
+    background-color: var(--primary-bold-color);
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    color: var(--accent-color);
 }
 
 .tabs ul li:hover {
-    background-color: #ddd;
+    opacity: 0.8;
 }
 
 
@@ -272,7 +359,7 @@ body {
 /* Style pour les cartes impaires */
 .card:nth-child(odd) {
     background-color: var(--accent-color);
-    color: black;
+    color: var(--text2-color);
 }
 
 /* Style pour les cartes paires */
@@ -283,6 +370,11 @@ body {
 
 /* Style des éléments internes */
 .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    gap: 20px;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -292,62 +384,21 @@ body {
 .card img {
     max-width: 80%;
     height: auto;
-    border-radius: 50%;
 
 }
 
 .card h4 {
     margin: 15px 0 10px;
     font-size: 1.2em;
+    text-transform: uppercase;
 }
 
 .card p {
     font-size: 0.9em;
 }
 
-.card .details {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 15px;
-}
-
-.card:nth-child(odd) button {
-    padding: 8px 12px;
-    border: none;
-    border-radius: 4px;
-    background-color: var(--primary-bold-color); /* Couleur du bouton */
-    color: var(--accent-color);
-    cursor: pointer;
-    font-size: 0.9em;
-}
-
-.card:nth-child(even) button {
-    padding: 8px 12px;
-    border: none;
-    border-radius: 4px;
-    background-color: var(--secondary-color); /* Couleur du bouton */
-    color: var(--text2-color);
-    cursor: pointer;
-    font-size: 0.9em;
-}
-
-.card:hover {
-    transform: scale(1.05);
-}
-
-
-.details {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.details span {
-    font-weight: bold;
-}
-
-button {
+.card a {
+    text-decoration: none;
     padding: 10px 15px;
     border: none;
     background-color: var(--secondary-color);
@@ -356,16 +407,123 @@ button {
     cursor: pointer;
     transition: background-color 0.3s;
     font-weight: 700;
+    margin-top: 20px;
 }
 
-button:hover {
+
+.card:nth-child(odd) a {
+    background: var(--primary-bold-color);
+    color: var(--accent-color);
+    
+    
+
+}
+
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+
+.card a:hover {
  opacity: 0.8;
 }
 
-.price {
-    font-size: 1.1rem;
-    color: var(--alert-color);
+
+
+
+
+/*SECTION */
+
+.custom-section {
+    padding: 20px;
 }
+
+/* Première div - pleine largeur */
+.full-width-div {
+    background-color: var(--primary-bold-color); /* Couleur de fond bleue */
+    color: var(--accent-color); /* Couleur du texte blanche */
+    text-align: center; /* Centre le texte */
+    padding: 40px 20px; /* Padding autour du contenu */
+}
+
+.main-title {
+    color: var(--secondary-color); /* Titre en jaune */
+    font-size: 3em; /* Taille du titre */
+    margin-bottom: 15px; /* Espace sous le titre */
+}
+
+.main-paragraph {
+    font-size: 1em; /* Taille du paragraphe */
+    line-height: 30px;
+}
+
+/* Deuxième div */
+
+.content-div {
+    display: flex; /* Utilise flexbox pour l'alignement */
+    justify-content: space-around; /* Espace autour des blocs */
+    gap: 10px; /* Espacement entre les blocs */
+    margin-top: 20px; /* Espace au-dessus de la div */
+    align-items: center;
+}
+
+/* Blocs de contenu */
+.content-block {
+    border-radius: 8px; /* Arrondit les bords */
+    padding: 20px; /* Padding interne */
+    flex: 1; /* Prend une largeur égale dans la flexbox */
+    max-width: 600px; /* Largeur maximum */
+    text-align: center; /* Centre le texte à l'intérieur des blocs */
+}
+
+.block-title {
+    font-size: 2em; /* Taille du titre du bloc */
+    margin-bottom: 10px; /* Espace sous le titre du bloc */
+    color: var(--primary-bold-color);
+    font-weight: 800;
+}
+
+.content-block i{
+    font-size: 4rem;
+    padding-bottom: 20px;
+}
+
+.block-paragraph {
+    font-size: 1em; /* Taille du paragraphe dans les blocs */
+}
+
+/* Styles responsives */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2.5em; /* Réduit la taille du titre sur les petits écrans */
+    }
+
+    .main-paragraph {
+        font-size: 0.9em; /* Ajuste la taille du paragraphe sur les petits écrans */
+    }
+
+    .content-div {
+        flex-direction: column; /* Empile les blocs sur petits écrans */
+        align-items: center; /* Centre les blocs dans la colonne */
+    }
+
+    .content-block {
+        width: 100%; /* Chaque bloc prendra 100% de la largeur sur les petits écrans */
+        max-width: none; /* Supprime la largeur maximum pour éviter les débordements */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
