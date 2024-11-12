@@ -36,6 +36,30 @@ section {
 }
 
 
+/* Animation Keyframe */
+@keyframes fadeInUpScale {
+    0% {
+      opacity: 0;
+      transform: translateY(30px) scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  /* Initial State for Section */
+  .section {
+    opacity: 0; /* Initial transparency */
+    transform: translateY(30px) scale(0.95); /* Initial position */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  
+  /* Apply Animation when Section is Visible */
+  .section.in-view {
+    animation: fadeInUpScale 0.8s ease forwards;
+  }
+  
 
 
 
@@ -161,6 +185,50 @@ body {
     display: flex;
 }
 
+
+
+/* Style du menu déroulant */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--accent-color); /* Utilisation de la couleur d'accentuation */
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour l'effet de profondeur */
+    z-index: 10;
+    min-width: 150px;
+}
+
+.submenu a {
+    display: block;
+    color: var(--text-color); /* Couleur du texte */
+    padding: 10px 20px;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+.submenu a:hover {
+    background-color: var(--primary-bold-color); /* Changement de couleur au survol */
+    color: #fff; /* Couleur de texte au survol */
+}
+
+/* Afficher le sous-menu au survol */
+.dropdown:hover .submenu {
+    display: block;
+}
+
+
+
+
 /* Media Queries pour la responsivité */
 
 @media (max-width: 1290px) {
@@ -266,7 +334,6 @@ h1 {
     margin: -20px;
     padding: 10px 20px;
     background-color: var(--secondary-color);
-    color: var(--text-color);
     text-align: center;
     border: none;
     cursor: pointer;
@@ -278,6 +345,13 @@ h1 {
     background-color: var(--primary-color);
 }
 
+.btn a{
+    color: var(--text-color);
+}
+
+.btn a:hover{
+    color: var(--accent-color);
+}
 /* --- Responsive Adjustments --- */
 
 @media (max-width: 1117px) {
@@ -634,6 +708,38 @@ p span {
     line-height: 1.4; /* Ajuster l'interligne pour plus de lisibilité */
 }
 
+/* Keyframes pour l'animation d'apparition */
+@keyframes slideUpFadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(50px); /* Part de 50px en bas */
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0); /* Position finale */
+    }
+  }
+  
+  /* Style de base des cartes */
+  .card {
+    opacity: 0;
+    transform: translateY(50px); /* Position de départ */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  
+  /* Animation appliquée lorsqu'une carte devient visible */
+  .card.in-view {
+    animation: slideUpFadeIn 0.8s ease forwards;
+  }
+  
+  /* Effet de survol */
+  .card:hover {
+    transform: translateY(-8px) !important; /* Ajout de !important pour prioriser cette règle */
+    transition: transform 0.5s ease; /* Transition pour un effet de survol fluide */
+  }
+  
+
+
 /* Responsiveness */
 @media (min-width: 1200px) {
     .number3 {
@@ -719,6 +825,63 @@ p span {
 .block-paragraph {
     font-size: 1em; /* Taille du paragraphe dans les blocs */
 }
+
+/* Animation pour l'apparition de la gauche */
+@keyframes slideInFromLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Animation pour l'apparition de la droite */
+  @keyframes slideInFromRight {
+    0% {
+      opacity: 0;
+      transform: translateX(100px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Styles de base pour chaque content-block */
+  .content-block {
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  
+  /* Animation appliquée au bloc gauche */
+  .content-block.left.in-view {
+    animation: slideInFromLeft 0.8s ease forwards;
+  }
+  
+  /* Animation appliquée au bloc droit */
+  .content-block.right.in-view {
+    animation: slideInFromRight 0.8s ease forwards;
+  }
+  
+
+/* Styles de base pour chaque content-block */
+.content-block {
+  opacity: 0;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Animation appliquée à chaque bloc visible */
+.content-block.in-view.left {
+  animation: slideInFromLeft 0.8s ease forwards;
+}
+
+.content-block.in-view.right {
+  animation: slideInFromRight 0.8s ease forwards;
+}
+
 
 /* Styles responsives */
 @media (max-width: 768px) {
