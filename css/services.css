@@ -35,6 +35,30 @@ section {
     overflow: auto; /* Permet le défilement à l'intérieur de la section si nécessaire */
 }
 
+/* Animation Keyframe */
+@keyframes fadeInUpScale {
+    0% {
+      opacity: 0;
+      transform: translateY(30px) scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  /* Style pour les sections animées uniquement */
+  .section {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  
+  /* Appliquer l'animation uniquement aux sections en vue */
+  .section.in-view {
+    animation: fadeInUpScale 0.8s ease forwards;
+  }
+  
 
 
 
@@ -161,6 +185,48 @@ body {
     display: flex;
 }
 
+
+/* Style du menu déroulant */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--accent-color); /* Utilisation de la couleur d'accentuation */
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour l'effet de profondeur */
+    z-index: 10;
+    min-width: 150px;
+}
+
+.submenu a {
+    display: block;
+    color: var(--text-color); /* Couleur du texte */
+    padding: 10px 20px;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+.submenu a:hover {
+    background-color: var(--primary-bold-color); /* Changement de couleur au survol */
+    color: #fff; /* Couleur de texte au survol */
+}
+
+/* Afficher le sous-menu au survol */
+.dropdown:hover .submenu {
+    display: block;
+}
+
+
+
 /* Media Queries pour la responsivité */
 
 @media (max-width: 1290px) {
@@ -269,14 +335,19 @@ body {
 }
 
 .row_text2 p {
-    margin: 10px 5px;
+    margin: 20px;
+
+}
+
+.row_text2 p span{
+    font-weight: 800;
 }
 
 .row_text2 a {
     display: inline-block;
     padding: 10px 20px;
     background-color: var(--secondary-color);
-    color: black;
+    color: var(--text2-color);
     text-decoration: none;
     border-radius: 5px;
     font-weight: bold;
@@ -284,7 +355,7 @@ body {
 }
 
 .row_text2 a:hover {
-    background-color: #ffcd38;
+    background-color: var(--secondary-color);
 }
 
 /* RESPONSIVE DESIGN */
@@ -461,6 +532,39 @@ body {
     flex-grow: 1; /* Fait en sorte que le texte occupe l'espace restant */
 }
 
+/* Keyframes pour l'animation d'apparition */
+@keyframes slideUpFadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(50px); /* Part de 50px en bas */
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0); /* Position finale */
+    }
+  }
+  
+  /* Styles de base pour chaque carte */
+  .service-card {
+    opacity: 0;
+    transform: translateY(50px); /* Position de départ */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  
+  /* Animation appliquée aux cartes visibles */
+  .service-card.in-view {
+    animation: slideUpFadeIn 0.8s ease forwards;
+  }
+  
+  /* Effet de survol */
+  .service-card:hover {
+    transform: translateY(-6px); /* Légère élévation */
+    transition: transform 0.3s ease; /* Transition pour le survol fluide */
+    opacity: 1; /* Assure que l'opacité reste à 1 pendant le survol */
+  }
+  
+
+
 /* --- Responsive Adjustments --- */
 
 /* Tablettes et petits écrans (max-width: 768px) */
@@ -522,6 +626,53 @@ body {
         font-size: 0.8rem;
     }
 }
+
+
+
+
+
+/* PARTENAIRE */
+
+.carousel {
+    position: relative; /* Position relative pour le conteneur */
+    overflow: hidden; /* Masque tout débordement */
+    text-align: center; /* Centre le texte */
+    width: 90%;
+}
+
+.clients h1{
+    padding: 20px ;
+    text-align: center;
+}
+
+.logos {
+    display: flex; /* Affiche les logos en ligne */
+    white-space: nowrap; /* Empêche le retour à la ligne */
+    animation: scroll 15s linear infinite; /* Animation de défilement */
+    padding: 0 0 20px 0;
+    gap: 40px;
+    text-align: center;
+    justify-content: center;
+}
+
+.logos img {
+    width: 250px; /* Largeur fixe pour les logos */
+    height: auto; /* Hauteur automatique pour conserver le ratio */
+    margin: 0 10px; /* Espacement entre les logos */
+}
+
+/* Animation de défilement */
+@keyframes scroll {
+    0% {
+        transform: translateX(100%); /* Commence à droite de l'écran */
+    }
+    100% {
+        transform: translateX(-100%); /* Termine à gauche de l'écran */
+    }
+}
+
+
+
 
 
 
