@@ -35,6 +35,31 @@ section {
     overflow: auto; /* Permet le défilement à l'intérieur de la section si nécessaire */
 }
 
+/* Animation Keyframe */
+@keyframes fadeInUpScale {
+    0% {
+      opacity: 0;
+      transform: translateY(30px) scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  /* Style pour les sections animées uniquement */
+  .section {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  
+  /* Appliquer l'animation uniquement aux sections en vue */
+  .section.in-view {
+    animation: fadeInUpScale 0.8s ease forwards;
+  }
+  
+
 
 
 
@@ -161,6 +186,48 @@ body {
     display: flex;
 }
 
+
+/* Style du menu déroulant */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--accent-color); /* Utilisation de la couleur d'accentuation */
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour l'effet de profondeur */
+    z-index: 10;
+    min-width: 150px;
+}
+
+.submenu a {
+    display: block;
+    color: var(--text-color); /* Couleur du texte */
+    padding: 10px 20px;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+.submenu a:hover {
+    background-color: var(--primary-bold-color); /* Changement de couleur au survol */
+    color: #fff; /* Couleur de texte au survol */
+}
+
+/* Afficher le sous-menu au survol */
+.dropdown:hover .submenu {
+    display: block;
+}
+
+
+
 /* Media Queries pour la responsivité */
 
 @media (max-width: 1290px) {
@@ -243,7 +310,7 @@ body {
 
 h1 {
     text-align: center;
-    color: #4B0082; /* Violet primaire */
+    color: var(--primary-bold-color); /* Violet primaire */
 }
 
 p {
@@ -359,6 +426,22 @@ form button:hover {
 .whatsapp-btn:hover {
     background-color: #128C7E;
 }
+/*Animation*/
+.contact-info, .form-section {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.form-section {
+    transform: translateX(50px); /* Slide in from the right */
+}
+
+.in-view {
+    opacity: 1;
+    transform: translateX(0); /* Move to original position */
+}
+
 
 /* Responsivité pour les tablettes */
 @media (max-width: 768px) {
@@ -466,3 +549,53 @@ footer {
 .footer a:hover {
     text-decoration: underline; /* Ajoute un soulignement au survol */
 }
+
+
+
+
+
+
+
+
+
+
+
+
+/*STYLE POUR LES RECHERCHES*/
+
+/* styles.css */
+/* Style pour le conteneur des résultats */
+#search-results {
+    position: absolute; /* Positionner les résultats sous la barre de recherche */
+    top: 100%; /* Positionner les résultats immédiatement sous la barre de recherche */
+    left: 0;
+    width: 100%; /* S'adapte à la largeur de la barre de recherche */
+    background-color: #ffffff; /* Fond blanc pour les résultats */
+    border: 1px solid #ddd; /* Bordure légère */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour une légère élévation */
+    max-height: 200px; /* Limite de hauteur avec défilement */
+    overflow-y: auto; /* Barre de défilement si le contenu dépasse la hauteur */
+    z-index: 100; /* Pour s'assurer que les résultats apparaissent au-dessus */
+    border-radius: 4px; /* Coins arrondis */
+}
+
+/* Style pour chaque élément de résultat */
+.result-item {
+    padding: 10px; /* Espacement interne pour chaque suggestion */
+    cursor: pointer; /* Curseur de pointeur pour indiquer la possibilité de cliquer */
+    border-bottom: 1px solid #f0f0f0; /* Séparation légère entre les résultats */
+}
+
+/* Style pour les liens dans chaque élément de résultat */
+.result-item a {
+    text-decoration: none; /* Enlever la décoration de lien par défaut */
+    color: #333; /* Couleur de texte neutre */
+    display: block; /* Prend tout l'espace de l'élément */
+    font-size: 14px; /* Taille de police réduite pour lisibilité */
+}
+
+/* Effet au survol de chaque élément de résultat */
+.result-item:hover {
+    background-color: #f9f9f9; /* Changement de couleur de fond au survol */
+}
+
