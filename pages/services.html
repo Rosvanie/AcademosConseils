@@ -11,42 +11,51 @@
     <section class="header">
         <div class="navbar">
             <a href="../index.html"><img src="../img/logo-png-academos.png" alt="logo_academos"></a>
-    
+        
             <div class="search-container">
                 <input type="search" placeholder="Saisissez un mot clé, une thématique, un métier">
-    
                 <button type="button" class="search-button">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
-                
             </div>
-    
+        
             <div class="menu">
                 <a href="../index.html">Accueil</a>
-                <a href="apropos.html" >A propos</a>
-                <a href="services.html" class="active">Services</a>
+                <a href="apropos.html">A propos</a>
+        
+                <!-- Menu déroulant pour Services -->
+                <div class="dropdown">
+                    <a href="services.html" class="dropdown-toggle active">Services</a>
+                    <div class="submenu">
+                        <a href="id/management.html">Management</a>
+                        <a href="id/accompagnement.html">Accompagnement</a>
+                        <a href="id/audit.html">Audit</a>
+                        <a href="id/conseil.html">Conseil</a>
+                        <a href="id/salle.html">Salle à louer</a>
+                    </div>
+                </div>
+        
                 <a href="formations.html">Formations</a>
                 <a href="contact.html">Contact</a>
-                
             </div>
-    
         </div>
-        <div class="row_text">
+        <div class="section row_text">
             <h3>Nos Solutions de Formation pour accompagner tout vos projets </h3>
 
-            <a>Formations >>></a>
+            <a href="formations.html">Formations >>></a>
         </div>
 
-        <div class="row_text2">
+        <div class="section row_text2">
             <h3>Qu'apportons nous ?</h3>
             <hr>
-            <p>ACADEMOS CONSEIL, au cœur de la transformation des organisations
+            <p>
+                <span>ACADEMOS CONSEIL</span>, au cœur de la transformation des organisations
                 En tant qu’employé, manager ou dirigeant, chacun de nous évolue dans un monde
                 professionnel en perpétuel changement, faisant face à de nombreux défis, à la
-                mondialisation et à son corollaire : l’accroissement de la concurrence.<br>
+                mondialisation et à son corollaire : l’accroissement de la concurrence.<br><br>
                 Ainsi, la transformation du monde et de nos environnements de travail est en état de
                 marche. Et les entreprises sont obligées de s’adapter à ces changements en
-                actionnant les leviers de la performance !<br>
+                actionnant les leviers de la performance !<br><br>
                 La formation professionnelle, l’accompagnement managérial, la mise en œuvre de
                 systèmes de management définis sur la base de normes internationales, ou d’outils
                 pour porter l’excellence opérationnelle, sont autant de solutions que ACADEMOS
@@ -59,7 +68,7 @@
     </section>
 
 
-    <section class="nos-services">
+    <section class="section nos-services">
         <h3>Nos Services</h3>
         <p>Découvrez nos services pour accompagner votre transformation digitale</p>
         
@@ -71,7 +80,7 @@
                     <p>Des solutions sur mesure pour répondre à vos besoins digitaux.</p>
                 </div>
             </a>
-            <a href="" class="service-card">
+            <a href="id/management.html" class="service-card">
                 <div class="service-card">
                     <i class="fas fa-bullhorn"></i>
                     <h4> MANAGEMENT DE LA PERFORMANCE </h4>
@@ -80,7 +89,7 @@
                     </p>
                 </div>
             </a>
-            <a href="" class="service-card">
+            <a href="id/audit.html" class="service-card">
                 <div class="service-card">
                     <i class="fas fa-chart-line"></i>
                     <h4>Audit</h4>
@@ -91,7 +100,7 @@
                     </p>
                 </div>
             </a>
-            <a href="" class="service-card">
+            <a href="id/conseil.html" class="service-card">
                 <div class="service-card">
                     <i class="fas fa-mobile-alt"></i>
                     <h4>CONSEIL</h4>
@@ -102,7 +111,7 @@
                     </p>
                 </div>
             </a>
-            <a href="" class="service-card">
+            <a href="id/accompagnement.html" class="service-card">
                 <div class="service-card">
                     <i class="fas fa-cloud"></i>
                     <h4>Accompagnement</h4>
@@ -113,7 +122,7 @@
                     </p>
                 </div>
             </a>
-            <a href="" class="service-card">
+            <a href="id/salle.html" class="service-card">
                 <div class="service-card">
                     <i class="fas fa-search-dollar"></i>
                     <h4>SALLE à Louer</h4>
@@ -129,6 +138,20 @@
 
 
         </div>
+    </section>
+
+    <section class="section full-height-section">
+
+        <div class="carousel clients">
+            <h1>IL NOUS FONT CONFIANCE</h1>
+            <div class="logos">
+                <img src="../img/clients partenaire/BRALICO.png" alt="Logo 1">
+                <img src="../img/clients partenaire/images-archer.png" alt="logo2">
+                <img src="../img/clients partenaire/Perenco.jpg" alt="logo3">
+                <img src="../img/clients partenaire/sgs.png" alt="logo4">
+            </div>
+        </div>
+
     </section>
 
     <footer>
@@ -158,6 +181,8 @@
             </div>
         </div>
     </footer>
+
+    <script src="../script.js"></script>
     
     
 </body>
