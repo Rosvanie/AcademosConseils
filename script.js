@@ -1,58 +1,237 @@
-// Fonction pour vérifier la visibilité des sections
-function checkVisibility() {
-    const sections = document.querySelectorAll('.section');
-    sections.forEach(section => {
-        const rect = section.getBoundingClientRect();
-        if (rect.top < window.innerHeight && rect.bottom >= 0) {
-            section.classList.add('visible');
-        } else {
-            section.classList.remove('visible');
-        }
-    });
-}
 
-// Fonction optimisée pour vérifier la visibilité avec requestAnimationFrame
-function onScroll() {
-    requestAnimationFrame(checkVisibility);
-}
+// Sélectionner uniquement les éléments avec la classe "section"
+const sections = document.querySelectorAll('.section');
 
+// Options de l'observateur
+const options = {
+  threshold: 0.1, // Déclenchement quand 10% de la section est visible
+};
 
-// Ajouter un événement de défilement pour vérifier la visibilité
-window.addEventListener('scroll', onScroll);
-
-// Vérifier la visibilité lors du chargement de la page
-window.addEventListener('load', checkVisibility);
-
-// Appeler la fonction de vérification initiale au chargement
-checkVisibility();
-
-
-// Sélectionner le header et la navbar
-const header = document.querySelector('header');
-const navbar = document.querySelector('.navbar');
-const headerHeight = header.offsetHeight; // Hauteur du header
-
-// Fonction pour gérer la position de la navbar
-function handleScroll() {
-    if (window.scrollY > headerHeight) {
-        // Si l'utilisateur a défilé au-delà de la hauteur du header
-        navbar.style.position = 'fixed'; // Fixe la navbar en haut de la page
-        navbar.style.top = '0'; // Positionne la navbar en haut de la fenêtre
-        navbar.style.bottom = 'auto'; // Annule la position en bas
+// Fonction de l'observateur
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in-view');
     } else {
-        // Si l'utilisateur est en haut de la page
-        navbar.style.position = 'relative'; // Positionne la navbar en bas du header
-        navbar.style.bottom = '0'; // Positionne la navbar en bas du header
-        navbar.style.top = 'auto'; // Annule la position en haut
+      entry.target.classList.remove('in-view');
     }
+  });
+}, options);
+
+// Observer chaque section ayant la classe "section"
+sections.forEach(section => {
+  sectionObserver.observe(section);
+});
+
+
+
+
+
+//CARD POUR ACCUEIL
+
+// Vérification du support d'IntersectionObserver
+if ('IntersectionObserver' in window) {
+    const cards = document.querySelectorAll('.card');
+  
+    // Création de l'observateur
+    const cardObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const index = Array.from(cards).indexOf(entry.target);
+          entry.target.classList.add('in-view');
+          entry.target.style.animationDelay = `${index * 0.2}s`;
+        } else {
+          entry.target.classList.remove('in-view');
+          entry.target.style.animationDelay = '0s';
+        }
+      });
+    }, { threshold: 0.1 }); // Seuil ici directement
+  
+    // Observer chaque carte
+    cards.forEach(card => cardObserver.observe(card));
+  } else {
+    console.warn('IntersectionObserver n’est pas supporté par ce navigateur.');
+  }
+  
+
+
+  //CARD POUR SERVICES
+  document.addEventListener("DOMContentLoaded", function () {
+    const serviceCards = document.querySelectorAll(".service-card");
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                serviceCards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add("in-view");
+                    }, index * 200); // Délai de 200 ms entre chaque carte
+                });
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    // Observer la section contenant les cartes
+    const gridSection = document.querySelector(".services-grid");
+    observer.observe(gridSection);
+});
+
+
+
+//CARD POUR APROPOS
+
+document.addEventListener("DOMContentLoaded", function () {
+  const contentBlocks = document.querySelectorAll(".content-block");
+
+  // Fonction pour observer et déclencher l'animation
+  const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+              entry.target.classList.add("in-view");
+          } else {
+              // On retire la classe pour que l'animation se déclenche de nouveau à chaque scroll
+              entry.target.classList.remove("in-view");
+          }
+      });
+  }, { threshold: 0.1 });
+
+  // On observe chaque bloc
+  contentBlocks.forEach(block => observer.observe(block));
+});
+
+
+
+// POUR CONTACT
+
+document.addEventListener("DOMContentLoaded", function () {
+  const sections = document.querySelectorAll(".contact-info, .form-section");
+
+  // Fonction pour observer et animer les éléments
+  const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+              entry.target.classList.add("in-view");
+          } else {
+              // Retire la classe pour réactiver l'animation au prochain scroll
+              entry.target.classList.remove("in-view");
+          }
+      });
+  }, { threshold: 0.1 });
+
+  // Observer chaque section
+  sections.forEach(section => observer.observe(section));
+});
+
+
+
+
+
+
+//POUR LES THEMATIC
+
+document.addEventListener('DOMContentLoaded', function () {
+  const onglets = document.querySelectorAll('.onglet_left a');
+  const tables = document.querySelectorAll('.formations-table-container');
+
+  // Fonction pour activer un tableau selon l'onglet cliqué
+  function activateTable(tabId) {
+      tables.forEach(table => {
+          table.classList.remove('active'); // Cacher tous les tableaux
+          if (table.id === tabId) {
+              table.classList.add('active'); // Montrer seulement le tableau correspondant
+          }
+      });
+  }
+
+  // Gestion des clics sur les onglets
+  onglets.forEach(onglet => {
+      onglet.addEventListener('click', (e) => {
+          e.preventDefault();
+
+          // Supprimer la classe active de tous les onglets
+          onglets.forEach(o => o.classList.remove('active'));
+
+          // Activer l'onglet actuel
+          onglet.classList.add('active');
+
+          // Activer le tableau correspondant
+          const tabId = onglet.getAttribute('data-tab');
+          activateTable(tabId);
+      });
+  });
+
+  // Activer le premier onglet et tableau au chargement
+  onglets[0].classList.add('active');
+  activateTable(onglets[0].getAttribute('data-tab'));
+});
+
+
+
+
+
+
+//LES ONGET DU PROGRAM
+function ouvrirOnglet(evt, ongletId) {
+  var i, contenuOnglet, boutonsOnglet;
+
+  contenuOnglet = document.getElementsByClassName("onglet-contenu");
+  for (i = 0; i < contenuOnglet.length; i++) {
+      contenuOnglet[i].style.display = "none";
+      contenuOnglet[i].classList.remove("actif");
+  }
+
+  boutonsOnglet = document.getElementsByClassName("onglet-bouton");
+  for (i = 0; i < boutonsOnglet.length; i++) {
+      boutonsOnglet[i].classList.remove("actif");
+  }
+
+  document.getElementById(ongletId).style.display = "block";
+  document.getElementById(ongletId).classList.add("actif");
+  evt.currentTarget.classList.add("actif");
 }
 
-// Écouter l'événement de défilement
-window.addEventListener('scroll', handleScroll);
+//pour la page programme
+// Attendre que le DOM soit complètement chargé
+document.addEventListener('DOMContentLoaded', () => {
+  const formationContainer = document.getElementById('formation-container');
+  const formationDetails = document.querySelector('.formation-details');
+  const formationSummary = document.querySelector('.formation-summary');
 
-// Appeler la fonction au chargement de la page pour initialiser
-handleScroll();
+  // Débuter l'animation
+  formationContainer.style.opacity = 1; // Afficher le container
+
+  // Attendre un court instant avant de lancer les animations des enfants
+  setTimeout(() => {
+      formationDetails.classList.add('animation');
+      formationSummary.classList.add('animation');
+  }, 100); // Délai avant le démarrage des animations
+});
 
 
 
 
+
+// POUR LLA PARTIE DETAILS
+
+document.addEventListener("DOMContentLoaded", function () {
+  const sections = document.querySelectorAll(".formation-section");
+
+  sections.forEach((section) => {
+      const heading = section.querySelector("h3");
+      const icon = heading.querySelector(".toggle-icon");
+      const contents = section.querySelectorAll(".toggle-content");
+
+      heading.addEventListener("click", function () {
+          // Utiliser une condition pour afficher/masquer les éléments de contenu
+          contents.forEach(content => {
+              if (content.style.display === "none" || content.style.display === "") {
+                  content.style.display = "block";  // Afficher les éléments
+                  icon.textContent = "-";          // Changer icône en '-'
+              } else {
+                  content.style.display = "none";   // Masquer les éléments
+                  icon.textContent = "+";          // Changer icône en '+'
+              }
+          });
+      });
+  });
+});
