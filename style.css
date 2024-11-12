@@ -25,6 +25,8 @@ html, body {
     margin: 0;
     padding: 0;
     overflow: auto; /* Empêche le défilement global */
+    overflow-x: hidden; /* Empêche le défilement horizontal */
+    
 }
 
 section {
@@ -34,6 +36,30 @@ section {
 }
 
 
+/* Animation Keyframe */
+@keyframes fadeInUpScale {
+    0% {
+      opacity: 0;
+      transform: translateY(30px) scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  /* Style pour les sections animées uniquement */
+  .section {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  
+  /* Appliquer l'animation uniquement aux sections en vue */
+  .section.in-view {
+    animation: fadeInUpScale 0.8s ease forwards;
+  }
+  
 
 
 
@@ -53,7 +79,7 @@ header{
 }
 
 header i{
-    color: var(--text2-color);
+    color: #000000;
     font-size: 50px;
     margin: 0 30px;
 }
@@ -62,7 +88,11 @@ header p{
     font-size: 0.8rem;
 }
 
-.navbar{
+.navbar {
+    position: fixed; /* Fixe la navbar en haut de la page */
+    top: 0; /* Place la navbar en haut */
+    left: 0;
+    right: 0;
     animation: slideIn 2s ease-out;
     width: 100%; /* Prend toute la largeur de la fenêtre */
     height: 90px; /* Hauteur de la navbar */
@@ -70,9 +100,13 @@ header p{
     display: flex; /* Utilise Flexbox pour aligner les éléments */
     align-items: center; /* Centre les éléments verticalement */
     justify-content: space-around; /* Espacement égal entre les éléments */
-    overflow: hidden; /* Cache tout débordement */
     z-index: 1000; /* Assure que la navbar est au-dessus du contenu */
-    transition: transform 0.3s ease, opacity 0.4s ease; 
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ajoute une ombre pour la distinction */
+}
+/* Ajoutez un padding supérieur au body pour éviter que le contenu ne soit caché derrière la navbar */
+body {
+    padding-top: 90px; /* Ajustez cette valeur selon la hauteur de votre navbar */
 }
 
 .navbar img{
@@ -88,7 +122,7 @@ header p{
 .menu a{
     font-weight: 600;
     font-size: 18px;
-    gap: 30px;
+    gap: 20px;
     color: var(--text-color);
     transition: 1s;
     display: inline-block; /* Assure que le pseudo-élément prend toute la largeur */
@@ -126,7 +160,7 @@ header p{
 }
 .search-container input[type="search"] {
     padding: 10px 40px 10px 20px; /* Ajout de l'espace pour l'icône */
-    border: 1px solid var(--primary-bold-color);
+    border: 1px solid var(--background-color);
     border-radius: 20px;
     font-size: 0.5rem;
     width: 500px;
@@ -143,6 +177,124 @@ header p{
 
 .search-button i {
     font-size: 20px;
+}
+
+
+/* Montrer le menu lorsqu'il est actif */
+.menu.active {
+    display: flex;
+}
+
+
+/* Style du menu déroulant */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--accent-color); /* Utilisation de la couleur d'accentuation */
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour l'effet de profondeur */
+    z-index: 10;
+    min-width: 150px;
+}
+
+.submenu a {
+    display: block;
+    color: var(--text-color); /* Couleur du texte */
+    padding: 10px 20px;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+.submenu a:hover {
+    background-color: var(--primary-bold-color); /* Changement de couleur au survol */
+    color: #fff; /* Couleur de texte au survol */
+}
+
+/* Afficher le sous-menu au survol */
+.dropdown:hover .submenu {
+    display: block;
+}
+
+
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .submenu {
+        position: static; /* Change position for mobile */
+        width: 100%; /* Make submenu full width */
+    }
+
+    .submenu a {
+        padding: 10px; /* Adjust padding for touch devices */
+        font-size: 12px; /* Taille de police plus petite pour mobile */
+    }
+
+    /* Show submenu when dropdown is clicked on mobile */
+    .dropdown-toggle:focus + .submenu,
+    .dropdown-toggle:active + .submenu {
+        display: block;
+    }
+}
+
+/* For better touch support */
+@media (max-width: 480px) {
+    .dropdown-toggle {
+        font-size: 16px; /* Taille de police plus petite pour les dispositifs tactiles */
+    }
+
+    .submenu a {
+        padding: 12px 10px; /* Adjust padding for better touch area */
+        font-size: 12px; /* Taille de police plus petite pour mobile */
+    }
+}
+/* Media Queries pour la responsivité */
+
+@media (max-width: 1290px) {
+    .navbar {
+        width: 100%;
+        box-sizing: border-box;
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+        overflow-x: hidden; /* Empêche les débordements horizontaux */
+    }
+
+    .menu {
+        justify-content: center;
+        gap: 20px;
+        width: 100%; /* Assure que le menu prend toute la largeur */
+        margin: 0;
+    }
+
+    .navbar img {
+        width: 120px;
+        max-width: 100%; /* Assure que l'image ne dépasse jamais 100% de la largeur */
+    }
+
+    .menu a {
+        font-size: 12px;
+        margin: 20px 0;
+    }
+
+    .search-container input[type="search"] {
+        max-width: 90vw; /* Définit une largeur maximale */
+    }
+
+    body, html {
+        width: 100%;
+        overflow-x: hidden; /* Empêche les débordements horizontaux */
+        padding-top: 90px;
+    }
 }
 
 
@@ -163,6 +315,11 @@ header p{
     height: 100%;
     object-fit: cover;
     z-index: -1;
+}
+.accueil img {
+    height: 100%;  /* L'image prend toute la hauteur de la div */
+    width: 100%;   /* L'image prend toute la largeur de la div */
+    object-fit: cover;  /* Cette propriété assure que l'image remplit la div tout en coupant les parties extérieures si nécessaire */
 }
 
 
@@ -229,7 +386,7 @@ header p{
 .grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* Toujours 4 cartes */
-    gap: 20px;
+    gap: 25px;
     justify-content: center;
 }
 
@@ -246,9 +403,6 @@ header p{
     height: 100%;
 }
 
-.card:hover {
-    transform: translateY(-6px);
-}
 
 .card img {
     width: 100%;
@@ -256,29 +410,58 @@ header p{
     object-fit: cover;
 }
 
-.content {
-    padding: 15px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
 
-.content h2 {
+.card h4 {
+    margin-top: 20px;
     margin-bottom: 10px;
-    font-size: 1.5rem;
-}
-
-.price {
-    color: var(--primary-bold-color);
-    font-weight: 1000;
-    margin-bottom: 10px;
-}
-
-.description {
     font-size: 1rem;
-    color: #333;
 }
+
+.card a{
+    text-decoration: none;
+    padding: 10px 15px;
+    border: none;
+    background-color: var(--secondary-color);
+    color: var(--text2-color);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: 700;
+    font-size: 0.8rem;
+}
+
+
+/* Keyframes pour l'animation d'apparition */
+@keyframes slideUpFadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(50px); /* Part de 50px en bas */
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0); /* Position finale */
+    }
+  }
+  
+  /* Style de base des cartes */
+  .card {
+    opacity: 0;
+    transform: translateY(50px); /* Position de départ */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  
+  /* Animation appliquée lorsqu'une carte devient visible */
+  .card.in-view {
+    animation: slideUpFadeIn 0.8s ease forwards;
+  }
+  
+  /* Effet de survol */
+  .card:hover {
+    transform: translateY(-8px) !important; /* Ajout de !important pour prioriser cette règle */
+    transition: transform 0.5s ease; /* Transition pour un effet de survol fluide */
+  }
+  
+
 
 @media (max-width: 1024px) {
     .grid {
@@ -316,12 +499,18 @@ header p{
         height: 100px; /* Réduction supplémentaire de l'image */
     }
 
-    .content h2 {
-        font-size: 0.9rem; /* Ajustement de la taille des titres */
+    .card h4 {
+        margin-top: 20px;
+        font-size: 0.7rem; /* Ajustement de la taille des titres */
     }
 
     .price, .description {
         font-size: 0.8rem; /* Texte plus petit */
+    }
+
+    .card a {
+        padding: 8px 12px; /* Réduction du padding */
+        font-size: 0.7rem; /* Réduction de la taille de la police */
     }
 }
 
@@ -342,13 +531,16 @@ header p{
         height: 80px; /* Taille d'image réduite pour mobile */
     }
 
-    .content h2 {
-        font-size: 0.8rem; /* Taille de texte encore plus petite pour mobile */
+    .card h4 {
+        margin-top: 20px;
+        font-size: 0.5rem; /* Taille de texte encore plus petite pour mobile */
     }
 
-    .price, .description {
-        font-size: 0.7rem;
+    .card a {
+        padding: 6px 10px;
+        font-size: 0.6rem;
     }
+
 }
 
 
@@ -365,16 +557,15 @@ header p{
     flex-direction: column;
     justify-content: center; /* Centre verticalement le contenu */
     align-items: center; /* Centre horizontalement le contenu */
-    height: 100vh; /* Assure que la section prend toute la hauteur */
     padding: 0 20px; /* Padding pour s'assurer que les éléments ne collent pas aux bords */
     box-sizing: border-box;
     overflow: hidden; /* Empêche le débordement */
+    margin-top: 30px;
 }
 
 #about .container {
     display: flex;
     flex-direction: column;
-    justify-content: space-around; /* Espacement égal entre les éléments */
     align-items: center; /* Centre horizontalement les éléments */
     height: 100%;
     gap: 20px; /* Espace entre les éléments */
@@ -497,32 +688,34 @@ header p{
 
 #about .about-box {
     display: flex;
-    justify-content: space-around; /* Distribution des éléments avec espace autour */
+    justify-content: space-around;
     align-items: center;
     gap: 20px;
     width: 100%;
     padding: 20px;
-    background-color: var(--primary-bold-color); /* Arrière-plan de la div about-box */
+    background-color: var(--primary-bold-color);
     box-sizing: border-box;
     border-radius: 20px;
     color: var(--accent-color);
-    flex-wrap: wrap; /* Assure la flexibilité en responsivité */
+    flex-wrap: wrap; /* Flexibilité pour s'adapter aux petits écrans */
 }
 
-#about .about-box .video {
+#about .about-box .video,
+#about .about-box .text,
+#about .about-box .img {
     width: 45%;
     max-width: 500px;
     border-radius: 10px;
 }
 
-#about .about-box .text {
-    width: 45%;
-    max-width: 500px;
-}
-
+/* CSS pour le texte dans la boîte about */
 #about .about-box p {
     font-size: 1rem;
+    line-height: 1.5; /* Améliore la lisibilité */
+    overflow: visible; /* Affiche le texte au complet */
+    white-space: normal; /* Permet le retour à la ligne */
 }
+
 
 #about .see-more {
     color: var(--secondary-color);
@@ -533,18 +726,65 @@ header p{
 
 /* Media Queries pour la responsivité */
 @media (max-width: 768px) {
-    #about .about-box {
-        flex-direction: column;
-        gap: 10px;
-    }
 
-    #about .about-box .video, 
+    #about .about-box .video,
     #about .about-box .text {
         width: 100%;
+        max-width: 100%; /* Utilise toute la largeur */
+    }
+    #about .about-box p {
+        font-size: 0.9rem;
     }
 
     #about .search-bar {
         max-width: 100%;
+    }
+    #about .checkbox-group {
+        gap: 20px; /* Réduit l’espace entre les cases à cocher */
+    }
+    #about .checkbox-group label {
+        font-size: 0.9rem; /* Diminue la taille de la police */
+    }
+    #about .checkbox-group input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+    }
+    #about .checkbox-group input[type="checkbox"]:checked::before {
+        font-size: 14px;
+        top: -1px;
+        left: 2px;
+    }
+}
+
+/* Responsivité pour les petits écrans (smartphones) */
+@media (max-width: 480px) {
+    #about .checkbox-group {
+        gap: 15px;
+    }
+    #about .checkbox-group label {
+        font-size: 0.8rem;
+    }
+    #about .checkbox-group input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+    }
+    #about .checkbox-group input[type="checkbox"]:checked::before {
+        font-size: 12px;
+        top: 0;
+        left: 1px;
+    }
+
+    #about .about-box {
+        padding: 15px;
+    }
+    #about .about-box .video,
+    #about .about-box .text {
+        width: 100%; /* Utilise toute la largeur */
+        max-width: 100%;
+    }
+    #about .about-box p {
+        font-size: 0.5rem;
+        line-height: 1.4;
     }
 }
 
@@ -784,16 +1024,6 @@ header p{
 
 .logos img:hover {
     transform: scale(1.1); /* Légère agrandissement au survol */
-}
-
-/* Animation de défilement */
-@keyframes scroll {
-    0% {
-        transform: translateX(100%); /* Commence à droite de l'écran */
-    }
-    100% {
-        transform: translateX(-100%); /* Termine à gauche de l'écran */
-    }
 }
 
 
