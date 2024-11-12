@@ -14,73 +14,72 @@
 
 <body>
     <section class="header">
-        <header>
-            <i class="fa-solid fa-circle-info" id="blinking-icon"></i>
-            <p>Ceci est une section spécial pour les infos</p>
-        </header>
-    
         <div class="navbar">
-            <a href="index.html"><img src="img/logo-png-academos.png" alt="logo_academos"></a>
-    
+            <a href="#"><img src="img/logo-png-academos.png" alt="logo_academos"></a>
+        
             <div class="search-container">
                 <input type="search" placeholder="Saisissez un mot clé, une thématique, un métier">
-    
                 <button type="button" class="search-button">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
-                
             </div>
-    
+        
             <div class="menu">
                 <a href="pages/apropos.html">A propos</a>
-                <a href="pages/services.html" >Services</a>
+        
+                <!-- Menu déroulant pour Services -->
+                <div class="dropdown">
+                    <a href="pages/services.html" class="dropdown-toggle">Services</a>
+                    <div class="submenu">
+                        <a href="pages/id/management.html">Management</a>
+                        <a href="pages/id/accompagnement.html">Accompagnement</a>
+                        <a href="pages/id/audit.html">Audit</a>
+                        <a href="pages/id/conseil.html">Conseil</a>
+                        <a href="pages/id/salle.html">Salle à louer</a>
+                    </div>
+                </div>
+        
                 <a href="pages/formations.html">Formations</a>
                 <a href="pages/contact.html">Contact</a>
-                
             </div>
-    
         </div>
+        
     
-        <div class="accueil">
+        <div class="section accueil">
+            <img class="background-vidéo" src="img/academos.jpg" alt="">
+            <!--
             <video class="background-video" autoplay loop muted>
                 <source src="vidéos/87593-602317653_tiny.mp4" type="video/mp4">
             </video>
+            -->
         </div>
     
-        <div class="container">
+        <div class="section container">
             <div class="grid">
                 <div class="card">
-                    <img src="img/conference-374078_1280.jpg" alt="Description photo 1">
-                    <div class="content">
-                        <h2>Titre 1</h2>
-                        <p class="price">100  FCFA</p>
-                        <p class="description">Description du produit ou service 1.</p>
-                    </div>
+                    <img src="img/formations/fiière.png" alt="Formation 2">
+                    <h4>Filières métiers</h4>
+                    <a href="pages/program.html">Découvrir</a>
                 </div>
+
                 <div class="card">
-                    <img src="img/sharepoint-training-8112055_1280.webp" alt="Description photo 2">
-                    <div class="content">
-                        <h2>Titre 2</h2>
-                        <p class="price">150  FCFA</p>
-                        <p class="description">Description du produit ou service 2.</p>
-                    </div>
+                    <img src="img/formations/M&RH.png" alt="Formation 2">
+                    <h4>Management & ressources humaines</h4>
+                    <a href="pages/program.html">Découvrir</a>
                 </div>
+
                 <div class="card">
-                    <img src="img/cocktail-8308286_1280.webp" alt="Description photo 3">
-                    <div class="content">
-                        <h2>Titre 3</h2>
-                        <p class="price">200  FCFA</p>
-                        <p class="description">Description du produit ou service 3.</p>
-                    </div>
+                    <img src="img/formations/EfficacitePro.png" alt="Formation 2">
+                    <h4>efficacité professionnelle</h4>
+                    <a href="pages/program.html">Découvrir</a>
                 </div>
+
                 <div class="card">
-                    <img src="img/taking-notes-3475991_1280.jpg" alt="Description photo 4">
-                    <div class="content">
-                        <h2>Titre 4</h2>
-                        <p class="price">250  FCFA</p>
-                        <p class="description">Description du produit ou service 4.</p>
-                    </div>
+                    <img src="img/formations/Informatique.png" alt="Formation 2">
+                    <h4>informatique</h4>
+                    <a href="pages/program.html">Découvrir</a>
                 </div>
+
                 
             </div>
         </div>
@@ -116,14 +115,17 @@
             </div>
     
     
-            <a href="#" class="link-with-trace">Decrouvrez nos formations éligibles >></a>
+            <a href="pages/formations.html" class="link-with-trace">Decrouvrez nos formations éligibles >></a>
     
     
             <div class="about-box">
+                <img src="img/apropos/apropos-academos.jpg" alt="" class="img">
+                <!--
                 <video class="video" controls>
                     <source src="vidéos/27091-361827476_tiny.mp4" type="video/mp4">
                     Votre navigateur ne supporte pas la lecture de vidéos.
                 </video>
+                -->
                 <div class="text">
                     <p>
                         <b>ACADEMOS CONSEILS Sarl</b>
@@ -151,7 +153,7 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-image">
-                        <img src="img/conference-374078_1280.jpg" alt="Photo 2">
+                        <img src="img/services/conference-374078_1280.jpg" alt="Photo 2">
                     </div>
                     <div class="card-text">
                         <h3 class="card-title">Formations</h3>
@@ -163,7 +165,7 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-image">
-                        <img src="img/sharepoint-training-8112055_1280.webp" alt="Photo 2">
+                        <img src="img/services/Management-de-la-performance.jpg" alt="Photo 2">
                     </div>
                     <div class="card-text">
                         <h3 class="card-title">MANAGEMENT DE LA PERFORMANCE </h3>
@@ -175,7 +177,7 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-image">
-                        <img src="img/taking-notes-3475991_1280.jpg" alt="Photo 2">
+                        <img src="img/services/AUDIT.jpg" alt="Photo 2">
                     </div>
                     <div class="card-text">
                         <h3 class="card-title">Audit</h3>
@@ -187,7 +189,7 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-image">
-                        <img src="img/taking-notes-3475991_1280.jpg" alt="Photo 2">
+                        <img src="img/services/salle-a-louer.jpg" alt="Photo 2">
                     </div>
                     <div class="card-text">
                         <h3 class="card-title">SALLE à Louer</h3>
@@ -229,7 +231,7 @@
     <footer>
         <div class="footer">
             <div class="footer-column logo-column">
-                <img src="../img/logo-png-academos.png" alt="Logo Footer">
+                <img src="img/logo-png-academos.png" alt="Logo Footer">
                 <p>&copy; 2024</p>
             </div>
             <div class="footer-column column-services">
